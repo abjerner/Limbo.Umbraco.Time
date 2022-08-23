@@ -11,11 +11,11 @@
                            ng-required="model.validation.mandatory"
                            class="datepickerinput" />
                     <button type="button" class="on-top" ng-click="vm.clearDate()" ng-show="vm.value">
-                        <i class="icon-delete" aria-hidden="true"></i>
+                        <umb-icon icon="icon-delete"></umb-icon>
                         <span class="sr-only"><localize key="content_removeDate">Clear date</localize></span>
                     </button>
                     <span class="add-on" aria-hidden="true">
-                        <i class="icon-calendar"></i>
+                        <umb-icon icon="icon-calendar"></umb-icon>
                     </span>
                 </div>
             </umb-date-time-picker>
@@ -28,7 +28,7 @@
                        ng-model="vm.rawValue"
                        class="datepickerinput" />
                 <span class="add-on" aria-hidden="true">
-                    <i class="icon-calendar"></i>
+                    <umb-icon icon="icon-calendar"></umb-icon>
                 </span>
             </div>
         </div>
