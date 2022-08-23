@@ -1,9 +1,5 @@
 ﻿[
   {
-    "outputFile": "App_Plugins/Skybrud.Time/Styles/Default.css",
-    "inputFile": "App_Plugins/Skybrud.Time/Styles/Default.less"
-  },
-  {
     "outputFile": "App_Plugins/Limbo.Umbraco.Time/Styles/Default.css",
     "inputFile": "App_Plugins/Limbo.Umbraco.Time/Styles/Default.less"
   }

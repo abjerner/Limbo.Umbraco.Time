@@ -40,7 +40,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.UnixTime {
             TimeZoneInfo timeZone = GetTimeZoneInfo(propertyType.DataType.Configuration as UnixTimestampConfiguration);
 
             // Convert to UNIX time from the specified seconds
-            EssentialsTime timestamp = EssentialsTime.FromUnixTimestamp(seconds).ToTimeZone(timeZone);
+            EssentialsTime timestamp = EssentialsTime.FromUnixTimeSeconds(seconds).ToTimeZone(timeZone);
 
             return timestamp;
 

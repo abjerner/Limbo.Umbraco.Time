@@ -1,5 +1,6 @@
 ﻿using Umbraco.Cms.Core.IO;
 using Umbraco.Cms.Core.PropertyEditors;
+using Umbraco.Cms.Core.Services;
 
 namespace Limbo.Umbraco.Time.PropertyEditors.UnixTime {
 
@@ -10,6 +11,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.UnixTime {
     public class UnixTimestampEditor : DataEditor {
 
         private readonly IIOHelper _ioHelper;
+        private readonly IEditorConfigurationParser _editorConfigurationParser;
 
         #region Constants
 
@@ -27,8 +29,9 @@ namespace Limbo.Umbraco.Time.PropertyEditors.UnixTime {
         /// <summary>
         /// Initializes a new instance of the <see cref="UnixTimestampEditor"/> class.
         /// </summary>
-        public UnixTimestampEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper ioHelper) : base(dataValueEditorFactory) {
+        public UnixTimestampEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory) {
             _ioHelper = ioHelper;
+            _editorConfigurationParser = editorConfigurationParser;
         }
 
         #endregion
@@ -37,7 +40,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.UnixTime {
 
         /// <inheritdoc />
         protected override IConfigurationEditor CreateConfigurationEditor() {
-            return new UnixTimestampConfigurationEditor(_ioHelper);
+            return new UnixTimestampConfigurationEditor(_ioHelper, _editorConfigurationParser);
         }
 
         #endregion

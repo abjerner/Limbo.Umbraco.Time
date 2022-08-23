@@ -1,5 +1,6 @@
 ﻿using Umbraco.Cms.Core.IO;
 using Umbraco.Cms.Core.PropertyEditors;
+using Umbraco.Cms.Core.Services;
 
 namespace Limbo.Umbraco.Time.PropertyEditors.TimeOffset {
 
@@ -10,6 +11,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.TimeOffset {
     public class TimeOffsetEditor : DataEditor {
 
         private readonly IIOHelper _ioHelper;
+        private readonly IEditorConfigurationParser _editorConfigurationParser;
 
         #region Constants
 
@@ -24,8 +26,9 @@ namespace Limbo.Umbraco.Time.PropertyEditors.TimeOffset {
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeOffsetEditor"/> class.
         /// </summary>
-        public TimeOffsetEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper ioHelper) : base(dataValueEditorFactory) {
+        public TimeOffsetEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory) {
             _ioHelper = ioHelper;
+            _editorConfigurationParser = editorConfigurationParser;
         }
 
         #endregion
@@ -34,7 +37,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.TimeOffset {
 
         /// <inheritdoc/>
         protected override IConfigurationEditor CreateConfigurationEditor() {
-            return new TimeOffsetConfigurationEditor(_ioHelper);
+            return new TimeOffsetConfigurationEditor(_ioHelper, _editorConfigurationParser);
         }
 
         #endregion
