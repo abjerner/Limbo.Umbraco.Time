@@ -1,29 +1,26 @@
-# Skybrud.Umbraco.Time
+# Limbo.Umbraco.Time
 
-**Skybrud.Umbraco.Time** is a small package for Umbraco 8 that adds three new property editors:
+**Limbo.Umbraco.Time** is a small package for Umbraco 10 that adds three new property editors:
 
 - [**Date Picker**](#date-picker) - returning an instance of [EssentialsDate](https://packages.skybrud.dk/skybrud.essentials/reference/time/essentialsdate/)
-- [**Time Picker**](#time-picker) - returning an instance of [TimeOffset](https://github.com/abjerner/Skybrud.Umbraco.Time/blob/master/src/Skybrud.Umbraco.Time/Models/TimeOffset.cs)
+- [**Time Picker**](#time-picker) - returning an instance of [TimeOffset](https://github.com/abjerner/Limbo.Umbraco.Time/blob/master/src/Limbo.Umbraco.Time/Models/TimeOffset.cs)
 - [**UNIX Timestamp**](#unix-timestamp) - returning an instance of [EssentialsTime](https://packages.skybrud.dk/skybrud.essentials/reference/time/essentialstime)
 
 While Umbraco already features a property editor for picking a date (or date and time), the property editors in this package handles more specific use cases (eg. the date picker will return EssentialsDate instead of DateTime).
 
 ## Installation
 
-The Umbraco 9 version of this package is only available via [NuGet](https://www.nuget.org/packages/Skybrud.Umbraco.Time/2.0.0). To install the package, you can use either .NET CLI:
+The Umbraco 10 version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.Time/1.0.0). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Skybrud.Umbraco.Time --version 2.0.0
+dotnet add package Limbo.Umbraco.Time --version 1.0.0
 ```
 
 or the older NuGet Package Manager:
 
 ```
-Install-Package Skybrud.Umbraco.Time -Version 2.0.0
+Install-Package Limbo.Umbraco.Time -Version 1.0.0
 ```
-
-**Umbraco 8**  
-For the Umbraco 8 version of this package, see the [**v1/main**](https://github.com/abjerner/Skybrud.Umbraco.Time/tree/v1/main) branch instead.
 
 ## Screenshots
 
@@ -34,7 +31,7 @@ For the Umbraco 8 version of this package, see the [**v1/main**](https://github.
 
 The date picker uses Umbraco's own date picker view, but ensures that the view is configured for selecting a date without any time. The property editor should be used in situations where only the date matters, and as such it returns an instance of [EssentialsDate](https://packages.skybrud.dk/skybrud.essentials/reference/time/essentialsdate/) instead of the normal `DateTime`.
 
-The `EssentialsDate` class comes from our [**Skybrud.Essentials** package](https://packages.skybrud.dk/skybrud.essentials/reference/time/essentialsdate/), which provides extended functionality for working with dates compared to `DateTime`.
+The `EssentialsDate` class comes from our [**Limbo.Essentials** package](https://packages.skybrud.dk/skybrud.essentials/reference/time/essentialsdate/), which provides extended functionality for working with dates compared to `DateTime`.
 
 Calling the `ToString` method on said class will result in a string representation of the date formatted using the [**ISO 8601** date format](https://en.wikipedia.org/wiki/ISO_8601), which is `yyyy-MM-dd` - eg. `2020-08-07`. The same format is used when serializing the value using [Json.NET](https://www.newtonsoft.com/json).
 
