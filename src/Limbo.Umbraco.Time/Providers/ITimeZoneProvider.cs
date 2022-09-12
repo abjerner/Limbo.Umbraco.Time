@@ -20,7 +20,7 @@ namespace Limbo.Umbraco.Time.Providers {
         /// <param name="id">The unique identifier of the time zone.</param>
         /// <param name="result">When this method returns, contains the time zone with the specified <paramref name="id"/>, if the time zone is found; otherwise <c>null</c>. This parameter is passed uninitialized.</param>
         /// <returns><c>true</c> if provider contains a time zone with the specified <paramref name="id"/>; otherwise <c>false</c>.</returns>
-        bool TryGetTimeZone(string id, out ITimeZone result);
+        bool TryGetTimeZone(string id, out ITimeZone? result);
 
     }
 

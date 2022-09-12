@@ -9,7 +9,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.DatePicker {
     public class DateConfigurationEditor : ConfigurationEditor {
 
         /// <inheritdoc />
-        public override IDictionary<string, object> ToValueEditor(object configuration) {
+        public override IDictionary<string, object> ToValueEditor(object? configuration) {
             var d = base.ToValueEditor(configuration);
             d["format"] = "YYYY-MM-DD";
             d["pickTime"] = false;

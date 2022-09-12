@@ -16,12 +16,12 @@ namespace Limbo.Umbraco.Time.PropertyEditors.TimeOffset {
         }
 
         /// <inheritdoc />
-        public override object ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType, object source, bool preview) {
+        public override object? ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType, object? source, bool preview) {
             return source;
         }
 
         /// <inheritdoc />
-        public override object ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object inter, bool preview) {
+        public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
 
             if (inter is string str && TimeSpan.TryParse(str, out TimeSpan time)) {
                 return new Models.TimeOffset(time, propertyType.DataType.ConfigurationAs<TimeOffsetConfiguration>());
@@ -32,7 +32,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.TimeOffset {
         }
 
         /// <inheritdoc />
-        public override object ConvertIntermediateToXPath(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object inter, bool preview) {
+        public override object? ConvertIntermediateToXPath(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
             return inter;
         }
 

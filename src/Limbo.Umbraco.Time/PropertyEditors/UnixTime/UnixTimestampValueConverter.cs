@@ -28,11 +28,11 @@ namespace Limbo.Umbraco.Time.PropertyEditors.UnixTime {
             return propertyType.EditorAlias.InvariantEquals(UnixTimestampEditor.EditorAlias);
         }
 
-        public override object ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType, object source, bool preview) {
+        public override object? ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType, object? source, bool preview) {
             return source;
         }
 
-        public override object ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object inter, bool preview) {
+        public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
 
             if (inter is not string { Length: > 0 } str || !int.TryParse(str, out int seconds)) return null;
 
@@ -46,7 +46,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.UnixTime {
 
         }
 
-        public override object ConvertIntermediateToXPath(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object inter, bool preview) {
+        public override object? ConvertIntermediateToXPath(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
             return inter;
         }
 
@@ -54,9 +54,9 @@ namespace Limbo.Umbraco.Time.PropertyEditors.UnixTime {
             return typeof(EssentialsTime);
         }
 
-        private TimeZoneInfo GetTimeZoneInfo(UnixTimestampConfiguration config) {
+        private TimeZoneInfo GetTimeZoneInfo(UnixTimestampConfiguration? config) {
             if (string.IsNullOrWhiteSpace(config?.TimeZone)) return TimeZoneInfo.Local;
-            return _timeZoneProvider.TryGetTimeZone(config.TimeZone, out ITimeZone result) ? result.TimeZoneInfo : TimeZoneInfo.Local;
+            return _timeZoneProvider.TryGetTimeZone(config.TimeZone, out ITimeZone? result) ? result!.TimeZoneInfo : TimeZoneInfo.Local;
         }
 
         #endregion

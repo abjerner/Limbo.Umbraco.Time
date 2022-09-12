@@ -36,7 +36,7 @@ namespace Limbo.Umbraco.Time.Models {
         /// </summary>
         /// <param name="time">A <see cref="TimeSpan"/> representing the time offset.</param>
         /// <param name="configuration">The configuration from the data type.</param>
-        public TimeOffset(TimeSpan time, TimeOffsetConfiguration configuration) {
+        public TimeOffset(TimeSpan time, TimeOffsetConfiguration? configuration) {
             _time = time;
             _format = string.IsNullOrWhiteSpace(configuration?.OutputFormat) ? "hh\\:mm" : configuration.OutputFormat;
         }

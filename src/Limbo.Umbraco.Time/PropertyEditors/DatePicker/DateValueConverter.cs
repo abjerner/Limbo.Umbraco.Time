@@ -23,7 +23,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.DatePicker {
         }
 
         /// <inheritdoc />
-        public override object ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object inter, bool preview) {
+        public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
             return inter is DateTime date && date > DateTime.MinValue ? new EssentialsDate(date) : null;
         }
 
