@@ -25,11 +25,11 @@ namespace Limbo.Umbraco.Time.PropertyEditors.UnixTime {
         [ConfigurationField("readonly", "Readonly", "boolean", Description = "Specify whether the editor should be readonly.")]
         public bool IsReadOnly { get; set; }
 
-        /// <summary>
-        /// Gets or sets whether the property value type should be a nullable type.
-        /// </summary>
-        [ConfigurationField("nullable", "Nullable", "boolean", Description = "Specify whether the property value type should be a nullable type.")]
-        public bool IsNullable { get; set; }
+        ///// <summary>
+        ///// Gets or sets whether the property value type should be a nullable type.
+        ///// </summary>
+        //[ConfigurationField("nullable", "Nullable", "boolean", Description = "Specify whether the property value type should be a nullable type.")]
+        //public bool IsNullable { get; set; }
 
     }
 
