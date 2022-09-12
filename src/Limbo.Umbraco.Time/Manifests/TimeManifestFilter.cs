@@ -16,7 +16,8 @@ namespace Limbo.Umbraco.Time.Manifests {
                     $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/TimePicker.js",
                     $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/Timestamp.js",
                     $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/TimeZone.js",
-                    $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/UnixTimestamp.js"
+                    $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/UnixTimestamp.js",
+                    $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/ValueType.js"
                 },
                 Stylesheets = new[] {
                     $"/App_Plugins/{TimePackage.Alias}/Styles/Default.css"
