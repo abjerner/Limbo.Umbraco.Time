@@ -1,0 +1,38 @@
+﻿<div class="limbo-unix-timestamp" ng-controller="Limbo.Umbraco.Timestamp.Controller as vm">
+    <div style="display: flex;">
+        <div ng-if="!model.readonly">
+            <umb-date-time-picker ng-model="vm.value" options="vm.config" on-change="vm.datePickerChange(selectedDates, dateStr, instance)">
+                <div class="input-append">
+                    <input type="text"
+                           name="datepicker"
+                           id="{{model.alias}}"
+                           ng-model="vm.rawValue"
+                           ng-blur="vm.inputChanged()"
+                           ng-required="model.validation.mandatory"
+                           class="datepickerinput" />
+                    <button type="button" class="on-top" ng-click="vm.clearDate()" ng-show="vm.value">
+                        <umb-icon icon="icon-delete"></umb-icon>
+                        <span class="sr-only"><localize key="content_removeDate">Clear date</localize></span>
+                    </button>
+                    <span class="add-on" aria-hidden="true">
+                        <umb-icon icon="icon-calendar"></umb-icon>
+                    </span>
+                </div>
+            </umb-date-time-picker>
+        </div>
+        <div ng-if="model.readonly">
+            <div class="input-append">
+                <input type="text"
+                       name="datepicker"
+                       disabled="disabled"
+                       ng-model="vm.rawValue"
+                       class="datepickerinput" />
+                <span class="add-on" aria-hidden="true">
+                    <umb-icon icon="icon-calendar"></umb-icon>
+                </span>
+            </div>
+        </div>
+    </div>
+    <pre>{{model.value | json}}</pre>
+    <pre>{{vm.date}}</pre>
+</div>

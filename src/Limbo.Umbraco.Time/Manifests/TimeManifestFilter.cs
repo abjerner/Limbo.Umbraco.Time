@@ -14,6 +14,7 @@ namespace Limbo.Umbraco.Time.Manifests {
                 BundleOptions = BundleOptions.Independent,
                 Scripts = new[] {
                     $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/TimePicker.js",
+                    $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/Timestamp.js",
                     $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/TimeZone.js",
                     $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/UnixTimestamp.js"
                 },
