@@ -1,11 +1,11 @@
 ﻿using Umbraco.Cms.Core.PropertyEditors;
 
-namespace Limbo.Umbraco.Time.PropertyEditors.Timestamp {
+namespace Limbo.Umbraco.Time.PropertyEditors.DateTime {
 
     /// <summary>
-    /// Configuration for <see cref="TimestampEditor"/>.
+    /// Configuration for <see cref="DateTimeEditor"/>.
     /// </summary>
-    public class TimestampConfiguration {
+    public class DateTimeConfiguration {
 
         /// <summary>
         /// Gets or sets the unique identifer of the time zone to be used.
@@ -19,11 +19,11 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Timestamp {
         [ConfigurationField("readonly", "Readonly", "boolean", Description = "Specify whether the editor should be readonly.")]
         public bool IsReadOnly { get; set; }
 
-        ///// <summary>
-        ///// Gets or sets whether the property value type should be a nullable type.
-        ///// </summary>
-        //[ConfigurationField("nullable", "Nullable", "boolean", Description = "Specify whether the property value type should be a nullable type.")]
-        //public bool IsNullable { get; set; }
+        /// <summary>
+        /// Gets or sets whether the property value type should be a nullable type.
+        /// </summary>
+        [ConfigurationField("nullable", "Nullable", "boolean", Description = "Specify whether the property value type should be a nullable type.")]
+        public bool IsNullable { get; set; }
 
         /// <summary>
         /// Gets or sets .NET value type returned by properties using this data type.

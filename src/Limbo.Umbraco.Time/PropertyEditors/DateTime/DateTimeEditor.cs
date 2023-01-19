@@ -2,22 +2,22 @@
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
 
-namespace Limbo.Umbraco.Time.PropertyEditors.Timestamp {
+namespace Limbo.Umbraco.Time.PropertyEditors.DateTime {
 
     /// <summary>
     /// Represents a unix time property editor.
     /// </summary>
-    [DataEditor(EditorAlias, EditorType.PropertyValue, "Limbo Timestamp", EditorView, Group = "Limbo", Icon = "icon-time color-limbo", ValueType = EditorValueType)]
-    public class TimestampEditor : DataEditor {
+    [DataEditor(EditorAlias, EditorType.PropertyValue, "Limbo Date & Time", EditorView, Group = "Limbo", Icon = "icon-time color-limbo", ValueType = EditorValueType)]
+    public class DateTimeEditor : DataEditor {
 
         private readonly IIOHelper _ioHelper;
         private readonly IEditorConfigurationParser _editorConfigurationParser;
 
         #region Constants
 
-        internal const string EditorAlias = "Limbo.Umbraco.Timestamp";
+        internal const string EditorAlias = "Limbo.Umbraco.DateTime";
 
-        internal const string EditorView = "/App_Plugins/Limbo.Umbraco.Time/Views/Editors/Timestamp.html";
+        internal const string EditorView = "/App_Plugins/Limbo.Umbraco.Time/Views/Editors/DateTime.html";
 
         internal const string EditorValueType = ValueTypes.DateTime;
 
@@ -26,9 +26,9 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Timestamp {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TimestampEditor"/> class.
+        /// Initializes a new instance of the <see cref="DateTimeEditor"/> class.
         /// </summary>
-        public TimestampEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory) {
+        public DateTimeEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory) {
             _ioHelper = ioHelper;
             _editorConfigurationParser = editorConfigurationParser;
         }
@@ -39,7 +39,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Timestamp {
 
         /// <inheritdoc />
         protected override IConfigurationEditor CreateConfigurationEditor() {
-            return new TimestampConfigurationEditor(_ioHelper, _editorConfigurationParser);
+            return new DateTimeConfigurationEditor(_ioHelper, _editorConfigurationParser);
         }
 
         #endregion

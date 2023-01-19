@@ -28,8 +28,8 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Date {
 
             return config?.ValueType switch {
                 "DateOnly" => nullable ? typeof(DateOnly?) : typeof(DateOnly),
-                "DateTime" => nullable ? typeof(DateTime?) : typeof(DateTime),
-                "DateTimeOffset" => nullable ? typeof(DateTimeOffset?) : typeof(DateTimeOffset),
+                "System.DateTime" => nullable ? typeof(System.DateTime?) : typeof(System.DateTime),
+                "System.DateTimeOffset" => nullable ? typeof(DateTimeOffset?) : typeof(DateTimeOffset),
                 "EssentialsTime" => typeof(EssentialsTime),
                 _ => typeof(EssentialsDate)
             };
@@ -47,8 +47,8 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Date {
 
             return config?.ValueType switch {
                 "DateOnly" => ConvertToDateOnly(inter, nullable),
-                "DateTime" => ConvertToDateTime(inter, nullable),
-                "DateTimeOffset" => ConvertToDateTimeOffset(inter, nullable),
+                "System.DateTime" => ConvertToSystemDateTime(inter, nullable),
+                "System.DateTimeOffset" => ConvertToSystemDateTimeOffset(inter, nullable),
                 "EssentialsTime" => ConvertToEssentialsTime(inter, nullable),
                 _ => ConvertToEssentialsDate(inter, nullable)
             };
@@ -57,29 +57,29 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Date {
 
         private static object? ConvertToDateOnly(object? inter, bool nullable) {
 
-            if (inter is not DateTime date) return nullable ? null : DateOnly.MinValue;
+            if (inter is not System.DateTime date) return nullable ? null : DateOnly.MinValue;
 
-            if (date == DateTime.MinValue && nullable) return null;
+            if (date == System.DateTime.MinValue && nullable) return null;
 
             return new DateOnly(date.Year, date.Month, date.Day);
 
         }
 
-        private static object? ConvertToDateTime(object? inter, bool nullable) {
+        private static object? ConvertToSystemDateTime(object? inter, bool nullable) {
 
-            if (inter is not DateTime date) return nullable ? null : DateTime.MinValue;
+            if (inter is not System.DateTime date) return nullable ? null : System.DateTime.MinValue;
 
-            if (date == DateTime.MinValue) return nullable ? null : DateTime.MinValue;
+            if (date == System.DateTime.MinValue) return nullable ? null : System.DateTime.MinValue;
 
-            return new DateTime(date.Year, date.Month, date.Day, 0, 0, 0, DateTimeKind.Local);
+            return new System.DateTime(date.Year, date.Month, date.Day, 0, 0, 0, DateTimeKind.Local);
 
         }
 
-        private static object? ConvertToDateTimeOffset(object? inter, bool nullable) {
+        private static object? ConvertToSystemDateTimeOffset(object? inter, bool nullable) {
 
-            if (inter is not DateTime date) return nullable ? null : DateTimeOffset.MinValue;
+            if (inter is not System.DateTime date) return nullable ? null : DateTimeOffset.MinValue;
 
-            if (date == DateTime.MinValue) return nullable ? null : DateTimeOffset.MinValue;
+            if (date == System.DateTime.MinValue) return nullable ? null : DateTimeOffset.MinValue;
 
             TimeSpan offset = TimeZoneInfo.Local.GetUtcOffset(date);
 
@@ -89,9 +89,9 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Date {
 
         private static object? ConvertToEssentialsDate(object? inter, bool nullable) {
 
-            if (inter is not DateTime date) return nullable ? null : EssentialsDate.MinValue;
+            if (inter is not System.DateTime date) return nullable ? null : EssentialsDate.MinValue;
 
-            if (date == DateTime.MinValue && nullable) return null;
+            if (date == System.DateTime.MinValue && nullable) return null;
 
             return new EssentialsDate(date);
 
@@ -99,9 +99,9 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Date {
 
         private static object? ConvertToEssentialsTime(object? inter, bool nullable) {
 
-            if (inter is not DateTime date) return nullable ? null : EssentialsTime.MinValue;
+            if (inter is not System.DateTime date) return nullable ? null : EssentialsTime.MinValue;
 
-            if (date == DateTime.MinValue) return nullable ? null : EssentialsTime.MinValue;
+            if (date == System.DateTime.MinValue) return nullable ? null : EssentialsTime.MinValue;
 
             // return new EssentialsTime(date, TimeZoneInfo.Local); // <-- time zone is not set due to bug in Skybrud.Essentials
             return new EssentialsTime(date).ToTimeZone(TimeZoneInfo.Local);

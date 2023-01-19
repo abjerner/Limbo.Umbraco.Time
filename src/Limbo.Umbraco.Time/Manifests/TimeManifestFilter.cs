@@ -14,10 +14,10 @@ namespace Limbo.Umbraco.Time.Manifests {
                 BundleOptions = BundleOptions.Independent,
                 Scripts = new[] {
                     $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/TimePicker.js",
-                    $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/Timestamp.js",
+                    $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/DateTime.js",
                     $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/TimeZone.js",
                     $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/UnixTimestamp.js",
-                    $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/ValueType.js",
+                    $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/DateTimeValueType.js",
                     $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/DateValueType.js",
                     $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/TimeValueType.js"
                 },

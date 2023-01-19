@@ -1,4 +1,4 @@
-﻿angular.module("umbraco").controller("Limbo.Umbraco.Time.ValueType.Controller", function ($scope) {
+﻿angular.module("umbraco").controller("Limbo.Umbraco.Time.DateTimeValueType.Controller", function ($scope) {
 
     const vm = this;
 

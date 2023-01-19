@@ -1,22 +1,22 @@
 ﻿using System;
-using Skybrud.Essentials.Time;
 using Limbo.Umbraco.Time.Models.TimeZones;
 using Limbo.Umbraco.Time.Providers;
+using Skybrud.Essentials.Time;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Extensions;
 
 #pragma warning disable 1591
 
-namespace Limbo.Umbraco.Time.PropertyEditors.Timestamp {
+namespace Limbo.Umbraco.Time.PropertyEditors.DateTime {
 
-    public class TimestampValueConverter : PropertyValueConverterBase {
+    public class DateTimeValueConverter : PropertyValueConverterBase {
 
         private readonly ITimeZoneProvider _timeZoneProvider;
 
         #region Constructors
 
-        public TimestampValueConverter(ITimeZoneProvider timeZoneProvider) {
+        public DateTimeValueConverter(ITimeZoneProvider timeZoneProvider) {
             _timeZoneProvider = timeZoneProvider;
         }
 
@@ -25,7 +25,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Timestamp {
         #region Member methods
 
         public override bool IsConverter(IPublishedPropertyType propertyType) {
-            return propertyType.EditorAlias.InvariantEquals(TimestampEditor.EditorAlias);
+            return propertyType.EditorAlias.InvariantEquals(DateTimeEditor.EditorAlias);
         }
 
         public override PropertyCacheLevel GetPropertyCacheLevel(IPublishedPropertyType propertyType) {
@@ -38,10 +38,10 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Timestamp {
 
         public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
 
-            if (inter is not DateTime dt) return null;
+            if (inter is not System.DateTime dt) return null;
 
             // get the configuration
-            TimestampConfiguration? config = propertyType.DataType.Configuration as TimestampConfiguration;
+            DateTimeConfiguration? config = propertyType.DataType.Configuration as DateTimeConfiguration;
 
             // Find the selected time zone
             TimeZoneInfo timeZone = GetTimeZoneInfo(config);
@@ -67,20 +67,20 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Timestamp {
 
 
             // Get the configuration
-            TimestampConfiguration? config = propertyType.DataType.Configuration as TimestampConfiguration;
+            DateTimeConfiguration? config = propertyType.DataType.Configuration as DateTimeConfiguration;
 
 
             // Return the selected value type
             return config?.ValueType switch {
                 "EssentialsDate" => typeof(EssentialsDate),
-                "DateTime" => typeof(DateTime),
+                "DateTime" => typeof(System.DateTime),
                 "DateTimeOffset" => typeof(DateTimeOffset),
                 _ => typeof(EssentialsTime)
             };
 
         }
 
-        private TimeZoneInfo GetTimeZoneInfo(TimestampConfiguration? config) {
+        private TimeZoneInfo GetTimeZoneInfo(DateTimeConfiguration? config) {
             if (string.IsNullOrWhiteSpace(config?.TimeZone)) return TimeZoneInfo.Local;
             return _timeZoneProvider.TryGetTimeZone(config.TimeZone, out ITimeZone? result) ? result!.TimeZoneInfo : TimeZoneInfo.Local;
         }
