@@ -53,7 +53,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Time {
             bool nullable = config?.IsNullable ?? false;
 
             return config?.ValueType switch {
-                "TimeOnly" => nullable ? typeof(DateOnly?) : typeof(DateOnly),
+                "TimeOnly" => nullable ? typeof(TimeOnly?) : typeof(TimeOnly),
                 _ => typeof(TimeOffset)
             };
 

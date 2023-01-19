@@ -38,7 +38,7 @@ namespace Limbo.Umbraco.Time.Models {
         /// <param name="configuration">The configuration from the data type.</param>
         public TimeOffset(TimeSpan time, TimeConfiguration? configuration) {
             _time = time;
-            _format = string.IsNullOrWhiteSpace(configuration?.OutputFormat) ? "hh\\:mm" : configuration.OutputFormat;
+            _format = string.IsNullOrWhiteSpace(configuration?.OutputFormat) ? "t" : configuration.OutputFormat;
         }
 
         #endregion
@@ -47,7 +47,7 @@ namespace Limbo.Umbraco.Time.Models {
 
         /// <inheritdoc />
         public override string ToString() {
-            return _time.ToString(_format);
+            return DateTime.Today.Add(_time).ToString(_format);
         }
 
         #endregion

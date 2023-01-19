@@ -22,7 +22,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Time {
         /// <summary>
         /// Gets or sets the output format of the time offset value.
         /// </summary>
-        [ConfigurationField("outputFormat", "Output format", "textstring", Description = "Specify the time format used when converting the property value to a string. If left blank, the format will default to <code>hh\\:mm</code>.<br /><br /><a href=\"https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-timespan-format-strings\" target=\"_blank\" rel=\"noopener\" class=\"skybrud-timepicker-link\">Read more about Custom TimeSpan format strings</a>")]
+        [ConfigurationField("outputFormat", "Output format", "textstring", Description = "Specify the time format used when converting the property value to a string. If left blank, the format will default to <code>t</code>.<br /><br /><a href=\"https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings#time-formats\" target=\"_blank\" rel=\"noopener\" class=\"skybrud-timepicker-link\">Read more about <em>Standard date and time format strings</em></a>.<br /><br />The format is ignored if the value type is <code>TimeOnly</code>.")]
         public string? OutputFormat { get; set; }
 
     }
