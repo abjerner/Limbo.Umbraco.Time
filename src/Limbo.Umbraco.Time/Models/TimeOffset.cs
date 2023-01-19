@@ -1,7 +1,7 @@
 ﻿using System;
+using Limbo.Umbraco.Time.PropertyEditors.Time;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters;
-using Limbo.Umbraco.Time.PropertyEditors.TimeOffset;
 
 namespace Limbo.Umbraco.Time.Models {
 

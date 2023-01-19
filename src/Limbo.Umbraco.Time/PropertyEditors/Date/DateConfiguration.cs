@@ -16,7 +16,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Date {
         /// <summary>
         /// Gets or sets whether the value is nullable.
         /// </summary>
-        [ConfigurationField("nullable", "Is nullable?", "boolean", Description = "Select whether the value is nullable.")]
+        [ConfigurationField("nullable", "Is nullable?", "boolean", Description = "Select whether the returned value is nullable.")]
         public bool IsNullable { get; set; }
 
     }

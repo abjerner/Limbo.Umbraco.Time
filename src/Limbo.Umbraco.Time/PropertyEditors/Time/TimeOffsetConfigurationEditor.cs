@@ -2,7 +2,7 @@
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
 
-namespace Limbo.Umbraco.Time.PropertyEditors.TimeOffset {
+namespace Limbo.Umbraco.Time.PropertyEditors.Time {
 
     /// <summary>
     /// Represents the configuration editor for the time offset value editor.

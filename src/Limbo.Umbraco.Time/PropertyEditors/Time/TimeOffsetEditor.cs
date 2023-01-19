@@ -2,12 +2,12 @@
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
 
-namespace Limbo.Umbraco.Time.PropertyEditors.TimeOffset {
+namespace Limbo.Umbraco.Time.PropertyEditors.Time {
 
     /// <summary>
     /// Represents a time offset property editor.
     /// </summary>
-    [DataEditor(EditorAlias, EditorType.PropertyValue, "Limbo Time Offset", EditorView, Group = "Limbo", Icon = "icon-time color-limbo", ValueType = ValueTypes.String)]
+    [DataEditor(EditorAlias, EditorType.PropertyValue, "Limbo Time", EditorView, Group = "Limbo", Icon = "icon-time color-limbo", ValueType = ValueTypes.String)]
     public class TimeOffsetEditor : DataEditor {
 
         private readonly IIOHelper _ioHelper;

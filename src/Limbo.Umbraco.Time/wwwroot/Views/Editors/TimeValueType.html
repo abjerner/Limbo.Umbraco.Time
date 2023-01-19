@@ -1,0 +1,5 @@
+﻿<div class="limbo-time-value-type" ng-controller="Limbo.Umbraco.Time.TimeValueType.Controller as vm">
+    <div>
+        <div ng-repeat="valueType in vm.valueTypes" ng-click="vm.select(valueType)" ng-class="{'--active': valueType.selected}">{{valueType.alias}}</div>
+    </div>
+</div>

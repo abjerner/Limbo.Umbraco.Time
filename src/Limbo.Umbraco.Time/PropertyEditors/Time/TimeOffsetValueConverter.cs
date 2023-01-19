@@ -1,4 +1,5 @@
 ﻿using System;
+using Limbo.Umbraco.Time.Models;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Extensions;
@@ -23,11 +24,17 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Time {
         /// <inheritdoc />
         public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
 
-            if (inter is string str && TimeSpan.TryParse(str, out TimeSpan time)) {
-                return new Models.TimeOffset(time, propertyType.DataType.ConfigurationAs<TimeOffsetConfiguration>());
-            }
+            // Get the configuration
+            TimeOffsetConfiguration? config = propertyType.DataType.Configuration as TimeOffsetConfiguration;
 
-            return null;
+            // Is the data type nullable?
+            bool nullable = config?.IsNullable ?? false;
+
+            return config?.ValueType switch {
+                "TimeOnly" => ConvertToTimeOnly(inter, nullable),
+                _ => ConvertToTimeOffset(inter, nullable, config)
+
+            };
 
         }
 
@@ -38,7 +45,38 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Time {
 
         /// <inheritdoc />
         public override Type GetPropertyValueType(IPublishedPropertyType propertyType) {
-            return typeof(Models.TimeOffset);
+
+            // Get the configuration
+            TimeOffsetConfiguration? config = propertyType.DataType.Configuration as TimeOffsetConfiguration;
+
+            // Is the data type nullable?
+            bool nullable = config?.IsNullable ?? false;
+
+            return config?.ValueType switch {
+                "TimeOnly" => nullable ? typeof(DateOnly?) : typeof(DateOnly),
+                _ => typeof(TimeOffset)
+            };
+
+        }
+
+        private static object? ConvertToTimeOnly(object? inter, bool nullable) {
+
+            if (inter is string str && TimeSpan.TryParse(str, out TimeSpan time)) {
+                return new TimeOnly(time.Ticks);
+            }
+
+            return nullable ? null : TimeOnly.MinValue;
+
+        }
+
+        private static object? ConvertToTimeOffset(object? inter, bool nullable, TimeOffsetConfiguration? config) {
+
+            if (inter is string str && TimeSpan.TryParse(str, out TimeSpan time)) {
+                return new TimeOffset(time, config);
+            }
+
+            return nullable ? null : new TimeOffset(TimeSpan.Zero, config);
+
         }
 
     }
