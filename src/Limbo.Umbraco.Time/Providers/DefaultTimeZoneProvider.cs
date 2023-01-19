@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Limbo.Umbraco.Time.Models.TimeZones;
 using TimeZone = Limbo.Umbraco.Time.Models.TimeZones.TimeZone;
@@ -29,7 +30,7 @@ namespace Limbo.Umbraco.Time.Providers {
         /// <param name="id">The unique identifier of the time zone.</param>
         /// <param name="result">When this method returns, contains the time zone with the specified <paramref name="id"/>, if the time zone is found; otherwise <c>null</c>. This parameter is passed uninitialized.</param>
         /// <returns><c>true</c> if provider contains a time zone with the specified <paramref name="id"/>; otherwise <c>false</c>.</returns>
-        public virtual bool TryGetTimeZone(string id, out ITimeZone? result) {
+        public virtual bool TryGetTimeZone(string id, [NotNullWhen(true)] out ITimeZone? result) {
             if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id));
             result = GetTimeZones().FirstOrDefault(x => x.Id == id);
             return result != null;
