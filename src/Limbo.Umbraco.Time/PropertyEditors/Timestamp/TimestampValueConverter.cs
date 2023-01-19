@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Globalization;
 using Skybrud.Essentials.Time;
 using Limbo.Umbraco.Time.Models.TimeZones;
 using Limbo.Umbraco.Time.Providers;
-using Skybrud.Essentials.Time.Iso8601;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Extensions;
