@@ -1,6 +1,6 @@
 ﻿using Umbraco.Cms.Core.PropertyEditors;
 
-namespace Limbo.Umbraco.Time.PropertyEditors.DatePicker {
+namespace Limbo.Umbraco.Time.PropertyEditors.Date {
 
     /// <summary>
     /// Configuration for <see cref="DateEditor"/>.

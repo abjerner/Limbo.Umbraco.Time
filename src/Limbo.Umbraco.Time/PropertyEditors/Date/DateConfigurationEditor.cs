@@ -5,7 +5,7 @@ using Umbraco.Cms.Core.Services;
 
 #pragma warning disable CS1591
 
-namespace Limbo.Umbraco.Time.PropertyEditors.DatePicker {
+namespace Limbo.Umbraco.Time.PropertyEditors.Date {
 
     /// <summary>
     /// Configuration editor for <see cref="DateEditor"/>.

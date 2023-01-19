@@ -5,7 +5,7 @@ using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.PropertyEditors.ValueConverters;
 using Umbraco.Extensions;
 
-namespace Limbo.Umbraco.Time.PropertyEditors.DatePicker {
+namespace Limbo.Umbraco.Time.PropertyEditors.Date {
 
     /// <summary>
     /// Value converter for <see cref="DateEditor"/>.

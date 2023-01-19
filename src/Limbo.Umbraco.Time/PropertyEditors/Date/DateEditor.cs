@@ -2,7 +2,7 @@
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
 
-namespace Limbo.Umbraco.Time.PropertyEditors.DatePicker {
+namespace Limbo.Umbraco.Time.PropertyEditors.Date {
 
     /// <summary>
     /// Represents a date picker property editor.

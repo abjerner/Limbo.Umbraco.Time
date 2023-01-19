@@ -3,7 +3,7 @@ using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Extensions;
 
-namespace Limbo.Umbraco.Time.PropertyEditors.TimeOffset {
+namespace Limbo.Umbraco.Time.PropertyEditors.Time {
 
     /// <summary>
     /// Value converter for <see cref="TimeOffsetEditor"/>.
