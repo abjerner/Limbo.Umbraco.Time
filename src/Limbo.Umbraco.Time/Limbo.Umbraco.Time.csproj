@@ -12,8 +12,8 @@
     <Company>Limbo</Company>
     <Product>Limbo.Umbraco.Time</Product>
     <Authors>Anders Bjerner</Authors>
-    <Copyright>Copyright © 2022</Copyright>
-    <Description>Property editors for picking dates and time in Umbraco 10.</Description>
+    <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
+    <Description>Property editors for picking dates and time in Umbraco 10+.</Description>
   </PropertyGroup>
 
   <PropertyGroup>
