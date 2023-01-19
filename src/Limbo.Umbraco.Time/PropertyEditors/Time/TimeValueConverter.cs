@@ -7,13 +7,13 @@ using Umbraco.Extensions;
 namespace Limbo.Umbraco.Time.PropertyEditors.Time {
 
     /// <summary>
-    /// Value converter for <see cref="TimeOffsetEditor"/>.
+    /// Value converter for <see cref="TimeEditor"/>.
     /// </summary>
-    public class TimeOffsetValueConverter : PropertyValueConverterBase {
+    public class TimeValueConverter : PropertyValueConverterBase {
 
         /// <inheritdoc />
         public override bool IsConverter(IPublishedPropertyType propertyType) {
-            return propertyType.EditorAlias.InvariantEquals(TimeOffsetEditor.EditorAlias);
+            return propertyType.EditorAlias.InvariantEquals(TimeEditor.EditorAlias);
         }
 
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Time {
         public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
 
             // Get the configuration
-            TimeOffsetConfiguration? config = propertyType.DataType.Configuration as TimeOffsetConfiguration;
+            TimeConfiguration? config = propertyType.DataType.Configuration as TimeConfiguration;
 
             // Is the data type nullable?
             bool nullable = config?.IsNullable ?? false;
@@ -47,7 +47,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Time {
         public override Type GetPropertyValueType(IPublishedPropertyType propertyType) {
 
             // Get the configuration
-            TimeOffsetConfiguration? config = propertyType.DataType.Configuration as TimeOffsetConfiguration;
+            TimeConfiguration? config = propertyType.DataType.Configuration as TimeConfiguration;
 
             // Is the data type nullable?
             bool nullable = config?.IsNullable ?? false;
@@ -69,7 +69,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Time {
 
         }
 
-        private static object? ConvertToTimeOffset(object? inter, bool nullable, TimeOffsetConfiguration? config) {
+        private static object? ConvertToTimeOffset(object? inter, bool nullable, TimeConfiguration? config) {
 
             if (inter is string str && TimeSpan.TryParse(str, out TimeSpan time)) {
                 return new TimeOffset(time, config);

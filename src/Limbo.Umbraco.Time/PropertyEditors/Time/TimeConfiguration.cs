@@ -5,7 +5,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Time {
     /// <summary>
     /// Represents the configuration for the time offset value editor.
     /// </summary>
-    public class TimeOffsetConfiguration {
+    public class TimeConfiguration {
 
         /// <summary>
         /// Gets or sets .NET value type returned by properties using this data type.
