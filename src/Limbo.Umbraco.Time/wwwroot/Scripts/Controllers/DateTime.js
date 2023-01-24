@@ -4,6 +4,10 @@
 
     $scope.model.readonly = $scope.model.config.readonly === true;
 
+    if ($scope.model.value) {
+        vm.initialValue = $scope.model.value;
+    }
+
     vm.config = {
         inline: false,
         enableTime: true,
@@ -90,7 +94,7 @@
         vm.date = new Date($scope.model.value);
 
         // Adjust for timezone offset
-        vm.date.setSeconds(vm.date.getSeconds() - new Date().getTimezoneOffset() * 60);
+        vm.date.setSeconds(vm.date.getSeconds() - vm.date.getTimezoneOffset() * 60);
 
         // Update the value for the UI
         vm.value = vm.rawValue = moment(vm.date).format(vm.config.momentFormat);

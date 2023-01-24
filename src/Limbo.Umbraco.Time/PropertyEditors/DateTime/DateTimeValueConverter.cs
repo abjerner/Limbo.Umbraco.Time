@@ -38,23 +38,17 @@ namespace Limbo.Umbraco.Time.PropertyEditors.DateTime {
 
         public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
 
-            if (inter is not System.DateTime dt) return null;
-
-            // get the configuration
+            // Get the configuration
             DateTimeConfiguration? config = propertyType.DataType.Configuration as DateTimeConfiguration;
 
-            // Find the selected time zone
-            TimeZoneInfo timeZone = GetTimeZoneInfo(config);
+            // Is the data type nullable?
+            bool nullable = config?.IsNullable ?? true;
 
-            // Convert to UNIX time from the specified seconds
-            EssentialsTime timestamp = new(dt, timeZone);
-
-            // Return the a value of selected value type
             return config?.ValueType switch {
-                "EssentialsDate" => new EssentialsDate(timestamp),
-                "DateTime" => timestamp.DateTimeOffset.DateTime,
-                "DateTimeOffset" => timestamp.DateTimeOffset,
-                _ => timestamp
+                "DateTime" => ConvertToDateTime(inter, nullable),
+                "DateTimeOffset" => ConvertToDateTimeOffset(inter, nullable, config),
+                "EssentialsDate" => ConvertToEssentialsDate(inter, nullable, config),
+                _ => ConvertToEssentialsTime(inter, nullable, config)
             };
 
         }
@@ -65,16 +59,17 @@ namespace Limbo.Umbraco.Time.PropertyEditors.DateTime {
 
         public override Type GetPropertyValueType(IPublishedPropertyType propertyType) {
 
-
             // Get the configuration
             DateTimeConfiguration? config = propertyType.DataType.Configuration as DateTimeConfiguration;
 
+            // Is the data type nullable?
+            bool nullable = config?.IsNullable ?? false;
 
             // Return the selected value type
             return config?.ValueType switch {
                 "EssentialsDate" => typeof(EssentialsDate),
-                "DateTime" => typeof(System.DateTime),
-                "DateTimeOffset" => typeof(DateTimeOffset),
+                "DateTime" => nullable ? typeof(System.DateTime?) : typeof(System.DateTime),
+                "DateTimeOffset" => nullable ? typeof(DateTimeOffset?) : typeof(DateTimeOffset),
                 _ => typeof(EssentialsTime)
             };
 
@@ -82,7 +77,53 @@ namespace Limbo.Umbraco.Time.PropertyEditors.DateTime {
 
         private TimeZoneInfo GetTimeZoneInfo(DateTimeConfiguration? config) {
             if (string.IsNullOrWhiteSpace(config?.TimeZone)) return TimeZoneInfo.Local;
-            return _timeZoneProvider.TryGetTimeZone(config.TimeZone, out ITimeZone? result) ? result!.TimeZoneInfo : TimeZoneInfo.Local;
+            return _timeZoneProvider.TryGetTimeZone(config.TimeZone, out ITimeZone? result) ? result.TimeZoneInfo : TimeZoneInfo.Local;
+        }
+
+        private static object? ConvertToDateTime(object? inter, bool nullable) {
+
+            if (inter is not System.DateTime date) return nullable ? null : System.DateTime.MinValue;
+
+            if (date == System.DateTime.MinValue) return nullable ? null : System.DateTime.MinValue;
+
+            return date.ToLocalTime();
+
+        }
+
+        private object? ConvertToDateTimeOffset(object? inter, bool nullable, DateTimeConfiguration? config) {
+
+            if (inter is not System.DateTime date) return nullable ? null : DateTimeOffset.MinValue;
+
+            if (date == System.DateTime.MinValue) return nullable ? null : DateTimeOffset.MinValue;
+
+            return ConvertToEssentialsTime(inter, nullable, config)!.DateTimeOffset;
+
+        }
+
+        private object? ConvertToEssentialsDate(object? inter, bool nullable, DateTimeConfiguration? config) {
+
+            if (inter is not System.DateTime date) return nullable ? null : EssentialsDate.MinValue;
+
+            if (date == System.DateTime.MinValue) return nullable ? null : EssentialsDate.MinValue;
+
+            return new EssentialsDate(ConvertToEssentialsTime(inter, nullable, config)!);
+
+        }
+
+        private EssentialsTime? ConvertToEssentialsTime(object? inter, bool nullable, DateTimeConfiguration? config) {
+
+            if (inter is not System.DateTime date) return nullable ? null : EssentialsTime.MinValue;
+
+            if (date == System.DateTime.MinValue) return nullable ? null : EssentialsTime.MinValue;
+
+            // Find the selected time zone
+            TimeZoneInfo timeZone = GetTimeZoneInfo(config);
+
+            // Convert to UNIX time from the specified seconds
+            EssentialsTime timestamp = new(date, timeZone);
+
+            return timestamp;
+
         }
 
         #endregion
