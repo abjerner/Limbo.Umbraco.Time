@@ -103,8 +103,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Date {
 
             if (date == System.DateTime.MinValue) return nullable ? null : EssentialsTime.MinValue;
 
-            // return new EssentialsTime(date, TimeZoneInfo.Local); // <-- time zone is not set due to bug in Skybrud.Essentials
-            return new EssentialsTime(date).ToTimeZone(TimeZoneInfo.Local);
+            return new EssentialsTime(date, TimeZoneInfo.Local);
 
         }
 
