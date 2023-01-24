@@ -28,8 +28,8 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Date {
 
             return config?.ValueType switch {
                 "DateOnly" => nullable ? typeof(DateOnly?) : typeof(DateOnly),
-                "System.DateTime" => nullable ? typeof(System.DateTime?) : typeof(System.DateTime),
-                "System.DateTimeOffset" => nullable ? typeof(DateTimeOffset?) : typeof(DateTimeOffset),
+                "DateTime" => nullable ? typeof(System.DateTime?) : typeof(System.DateTime),
+                "DateTimeOffset" => nullable ? typeof(DateTimeOffset?) : typeof(DateTimeOffset),
                 "EssentialsTime" => typeof(EssentialsTime),
                 _ => typeof(EssentialsDate)
             };
@@ -47,8 +47,8 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Date {
 
             return config?.ValueType switch {
                 "DateOnly" => ConvertToDateOnly(inter, nullable),
-                "System.DateTime" => ConvertToSystemDateTime(inter, nullable),
-                "System.DateTimeOffset" => ConvertToSystemDateTimeOffset(inter, nullable),
+                "DateTime" => ConvertToSystemDateTime(inter, nullable),
+                "DateTimeOffset" => ConvertToSystemDateTimeOffset(inter, nullable),
                 "EssentialsTime" => ConvertToEssentialsTime(inter, nullable),
                 _ => ConvertToEssentialsDate(inter, nullable)
             };
