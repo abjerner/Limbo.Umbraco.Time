@@ -63,7 +63,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.DateTime {
             DateTimeConfiguration? config = propertyType.DataType.Configuration as DateTimeConfiguration;
 
             // Is the data type nullable?
-            bool nullable = config?.IsNullable ?? false;
+            bool nullable = config?.IsNullable ?? true;
 
             // Return the selected value type
             return config?.ValueType switch {
