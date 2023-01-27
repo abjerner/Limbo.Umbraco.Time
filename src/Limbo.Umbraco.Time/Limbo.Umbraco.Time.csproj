@@ -39,6 +39,9 @@
     <Content Remove="compilerconfig.json" />
     <None Include="compilerconfig.json" />
     <Content Remove="wwwroot\Styles\Default.less" />
+    <None Include="wwwroot\Scripts\Directives\DatePicker.js" />
+    <None Include="wwwroot\Scripts\Directives\Holidays.js" />
+    <None Include="wwwroot\Scripts\Directives\Weekdays.js" />
     <None Include="wwwroot\Styles\Default.less" />
     <Content Remove="wwwroot\Scripts\dummy.js" />
     <None Include="wwwroot\Scripts\dummy.js" />

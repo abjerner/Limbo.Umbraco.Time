@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<language alias="en" intName="English (US)" localName="English (US)" lcid="1033" culture="en-US">
+
+  <area alias="limboOpeningHours">
+
+    <key alias="weekdayTitle">Weekday opening hours</key>
+    <key alias="holidayTitle">Holiday opening hours</key>
+
+    <key alias="addHoliday">Add holiday</key>
+
+    <key alias="day">Day</key>
+    <key alias="date">Date</key>
+    <key alias="text">Text</key>
+    <key alias="opens">Opens</key>
+    <key alias="closes">Closes</key>
+
+    <key alias="monday">Monday</key>
+    <key alias="tuesday">Tuesday</key>
+    <key alias="wednesday">Wednesday</key>
+    <key alias="thursday">Thursday</key>
+    <key alias="friday">Friday</key>
+    <key alias="saturday">Saturday</key>
+    <key alias="sunday">Sunday</key>
+
+    <key alias="closed">Closed</key>
+    <key alias="addOpeningHours">Add opening hours</key>
+    <key alias="from">from</key>
+    <key alias="to">to</key>
+    <key alias="and">and</key>
+
+  </area>
+
+</language>

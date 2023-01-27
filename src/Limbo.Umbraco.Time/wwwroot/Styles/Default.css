@@ -123,3 +123,83 @@ a.limbo-timepicker-link:focus {
   color: #2152a3;
   cursor: pointer;
 }
+.limbo-opening-hours {
+  /*margin: 10px;
+    border: 2px solid red;
+    padding: 10px;*/
+}
+.limbo-opening-hours .panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+.limbo-opening-hours .panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  font-weight: bold;
+}
+.limbo-opening-hours .panel-default {
+  border-color: #ddd;
+}
+.limbo-opening-hours .panel-default > .panel-heading {
+  color: #333;
+  background-color: #f8f8f8;
+  border-color: #ddd;
+}
+.limbo-opening-hours .panel-body {
+  padding: 10px 0;
+}
+.limbo-opening-hours .table tbody td {
+  line-height: 27px;
+  line-height: 29px;
+  height: 30px;
+}
+.limbo-opening-hours .table tbody td select {
+  width: auto;
+  height: 30px;
+  padding: 2px;
+}
+.limbo-opening-hours td.text-col {
+  min-width: 250px;
+}
+.limbo-opening-hours td.time-col {
+  width: 100%;
+}
+.limbo-opening-hours .time-item {
+  white-space: nowrap;
+  display: inline-block;
+  background: #efefef;
+  padding: 0 5px;
+}
+.limbo-opening-hours td.text-col div {
+  width: 100px;
+  font-weight: bold;
+}
+.limbo-opening-hours a.remove-time {
+  color: red;
+}
+.limbo-opening-hours a.add-time {
+  color: #2E8AEA;
+}
+.limbo-opening-hours .table tr:first-child th,
+.limbo-opening-hours .table tr:first-child td {
+  border-top: 0;
+}
+.limbo-opening-hours .week-day-text {
+  font-weight: bold;
+}
+.limbo-opening-hours .date-col .datepickerinput {
+  width: 80px;
+}
+.limbo-opening-hours .time-col .umb-datepicker p,
+.limbo-opening-hours .date-col .umb-datepicker p {
+  display: none !important;
+}
+.limbo-opening-hours .btn.btn-link {
+  padding: 3px;
+  font-size: 14px;
+}
+.limbo-opening-hours .btn.btn-link.add-time {
+  color: #2196f3;
+}

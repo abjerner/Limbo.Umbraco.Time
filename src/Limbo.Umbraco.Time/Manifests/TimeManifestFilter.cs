@@ -20,7 +20,11 @@ namespace Limbo.Umbraco.Time.Manifests {
                     $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/UnixTimestamp.js",
                     $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/DateTimeValueType.js",
                     $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/DateValueType.js",
-                    $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/TimeValueType.js"
+                    $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/TimeValueType.js",
+                    $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/OpeningHours.js",
+                    $"/App_Plugins/{TimePackage.Alias}/Scripts/Directives/DatePicker.js",
+                    $"/App_Plugins/{TimePackage.Alias}/Scripts/Directives/Holidays.js",
+                    $"/App_Plugins/{TimePackage.Alias}/Scripts/Directives/Weekdays.js"
                 },
                 Stylesheets = new[] {
                     $"/App_Plugins/{TimePackage.Alias}/Styles/Default.css"
