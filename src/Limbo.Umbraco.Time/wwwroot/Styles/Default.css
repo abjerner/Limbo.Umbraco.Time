@@ -115,3 +115,11 @@ a.limbo-timepicker-link:focus {
 .limbo-time-value-type > div > div + div {
   margin-left: 5px;
 }
+.limbo-time-zone-picker .umb-node-preview {
+  padding-left: 10px;
+}
+.limbo-time-zone-picker .umb-node-preview:hover {
+  background-color: #f9f9fa;
+  color: #2152a3;
+  cursor: pointer;
+}

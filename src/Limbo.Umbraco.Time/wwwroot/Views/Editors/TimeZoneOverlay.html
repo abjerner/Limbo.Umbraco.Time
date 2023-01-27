@@ -1,0 +1,40 @@
+﻿<div class="limbo-time-zone-picker" ng-controller="Limbo.Umbraco.TimeZone.Overlay.Controller as vm">
+    <umb-editor-view>
+        <umb-editor-header name="model.title"
+                           name-locked="true"
+                           navigation="model.navigation"
+                           hide-alias="true"
+                           hide-icon="true"
+                           hide-description="true">
+        </umb-editor-header>
+        <umb-editor-container>
+            <div class="form-search mb3">
+                <umb-search-filter input-id="itempicker-search"
+                                   model="vm.searchTerm"
+                                   label-key="placeholders_filter"
+                                   text="Type to filter..."
+                                   css-class="w-100"
+                                   auto-focus="true">
+                </umb-search-filter>
+            </div>
+            <umb-box>
+                <umb-box-content>
+                    <div class="umb-node-preview" ng-repeat="item in model.availableItems | filter:vm.searchTerm" ng-click="vm.selectItem(item)">
+                        <div class="flex">
+                            <umb-icon icon="{{item.icon}}" class="umb-node-preview__icon"></umb-icon>
+                            <div class="umb-node-preview__content">
+                                <div class="umb-node-preview__name" ng-attr-title="{{item.name}}" title="{{item.name}}">{{item.name}}</div>
+                                <div class="umb-node-preview__description">{{item.description}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </umb-box-content>
+            </umb-box>
+        </umb-editor-container>
+        <umb-editor-footer>
+            <umb-editor-footer-content-right>
+                <umb-button ng-if="model.infiniteMode" action="vm.close()" button-style="link" label-key="cancel" type="button" shortcut="esc"></umb-button>
+            </umb-editor-footer-content-right>
+        </umb-editor-footer>
+    </umb-editor-view>
+</div>

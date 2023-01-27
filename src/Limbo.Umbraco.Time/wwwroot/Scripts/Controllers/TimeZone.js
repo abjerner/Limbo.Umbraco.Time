@@ -1,4 +1,4 @@
-﻿angular.module("umbraco").controller("Limbo.Umbraco.TimeZone.Controller", function ($scope, $http) {
+﻿angular.module("umbraco").controller("Limbo.Umbraco.TimeZone.Controller", function ($scope, $http, editorService) {
 
     const vm = this;
 
@@ -16,7 +16,15 @@
         vm.timeZones = res.data;
 
         if ($scope.model.value) {
-            vm.timeZones.forEach(function(tz) {
+            vm.timeZones.forEach(function (tz) {
+                tz.icon = "icon-time";
+                tz.description = tz.id;
+
+                if (tz.name.indexOf("Server time zone:") === 0) {
+                    tz.name = tz.name.substr(18);
+                    tz.description = "Local Server Time";
+                }
+
                 if (tz.id === $scope.model.value) {
                     vm.timeZone = tz;
                 }
@@ -29,5 +37,24 @@
         }
 
     });
+
+    vm.openPicker = function () {
+
+        editorService.open({
+            title: "Select time zone",
+            size: "medium",
+            view: "/App_plugins/Limbo.Umbraco.Time/Views/Editors/TimeZoneOverlay.html",
+            availableItems: vm.timeZones,
+            close: function () {
+                editorService.close();
+            },
+            submit: function (model) {
+                vm.timeZone = model.selectedItem;
+                vm.change();
+                editorService.close();
+            }
+        });
+
+    };
 
 });
