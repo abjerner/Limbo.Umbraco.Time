@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Limbo.Umbraco.Time.PropertyEditors.OpeningHours;
 using Newtonsoft.Json;
@@ -76,7 +77,8 @@ namespace Limbo.Umbraco.Time.Models.OpeningHours {
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
         /// <param name="configuration">The opening hours configuration.</param>
-        public static OpeningHoursTimeSlot Parse(JObject obj, OpeningHoursConfiguration configuration) {
+        [return: NotNullIfNotNull("obj")]
+        public static OpeningHoursTimeSlot? Parse(JObject? obj, OpeningHoursConfiguration? configuration) {
             return obj == null ? null : new OpeningHoursTimeSlot(obj, configuration);
         }
 

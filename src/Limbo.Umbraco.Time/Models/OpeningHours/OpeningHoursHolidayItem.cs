@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Limbo.Umbraco.Time.PropertyEditors.OpeningHours;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -19,23 +20,7 @@ namespace Limbo.Umbraco.Time.Models.OpeningHours {
         /// <see cref="DateTime.MinValue"/> will be returned instead.
         /// </summary>
         [JsonProperty("date", Order = 3)]
-        public EssentialsDate? Date { get; set; }
-
-        /// <summary>
-        /// Gets whether a date has been specified for this holiday item.
-        /// </summary>
-        [JsonIgnore]
-        public bool HasDate {
-            get { return Date != null; }
-        }
-
-        /// <summary>
-        /// Gets whether the holiday item is valid. Currently this property is just an alias of <see cref="HasDate"/>.
-        /// </summary>
-        [JsonIgnore]
-        public bool IsValid {
-            get { return HasDate; }
-        }
+        public EssentialsDate Date { get; set; }
 
         #endregion
 
@@ -47,7 +32,7 @@ namespace Limbo.Umbraco.Time.Models.OpeningHours {
         /// <param name="json">The JSON object representing the holiday item.</param>
         /// <param name="configuration">The opening hours configuration.</param>
         protected OpeningHoursHolidayItem(JObject json, OpeningHoursConfiguration? configuration) : base(json, default, configuration) {
-            Date = json.GetString("date", EssentialsDate.Parse);
+            Date = json.GetString("date", EssentialsDate.Parse)!;
             DayOfWeek = Date.DayOfWeek;
         }
 
@@ -67,7 +52,8 @@ namespace Limbo.Umbraco.Time.Models.OpeningHours {
         /// Gets an instance of <see cref="OpeningHoursHolidayItem"/> from the specified <see cref="JObject"/>.
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
-        public static OpeningHoursHolidayItem Parse(JObject json) {
+        [return: NotNullIfNotNull("json")]
+        public static OpeningHoursHolidayItem? Parse(JObject? json) {
             return json == null ? null : new OpeningHoursHolidayItem(json, null);
         }
 

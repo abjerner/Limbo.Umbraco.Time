@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Limbo.Umbraco.Time.PropertyEditors.OpeningHours;
 using Newtonsoft.Json;
@@ -31,9 +32,21 @@ namespace Limbo.Umbraco.Time.Models.OpeningHours {
         /// </summary>
         [JsonProperty("label", Order = 2)]
         public string Label {
-            get => _label ?? WeekDayName;
+            get => _label ?? LocalDayName;
             set => _label = value;
         }
+
+        /// <summary>
+        /// Gets the English name of the day.
+        /// </summary>
+        [JsonIgnore]
+        public string EnglishDayName => CultureInfo.InvariantCulture.DateTimeFormat.GetDayName(DayOfWeek).FirstCharToUpper();
+
+        /// <summary>
+        /// Gets the local name of the day according to <see cref="CultureInfo.CurrentCulture"/>.
+        /// </summary>
+        [JsonProperty("localDayName")]
+        public string LocalDayName => CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(DayOfWeek).FirstCharToUpper();
 
         /// <summary>
         /// Gets an array of the time slots of the day.
@@ -65,14 +78,6 @@ namespace Limbo.Umbraco.Time.Models.OpeningHours {
             get { return Items is { Count: > 1 }; }
         }
 
-        /// <summary>
-        /// Gets the name of the weekday according to <see cref="CultureInfo.CurrentCulture"/>.
-        /// </summary>
-        [JsonIgnore]
-        public virtual string WeekDayName {
-            get { return DateTimeFormatInfo.CurrentInfo.GetDayName(DayOfWeek).FirstCharToUpper(); }
-        }
-
         #endregion
 
         #region Constructors
@@ -85,8 +90,8 @@ namespace Limbo.Umbraco.Time.Models.OpeningHours {
         /// <param name="configuration">The opening hours configuration.</param>
         protected OpeningHoursDayItem(JObject json, DayOfWeek dayOfWeek, OpeningHoursConfiguration? configuration) : base(json) {
             DayOfWeek = dayOfWeek;
-            Label = json.GetString("label");
-            Items = json.GetArray("items", x => OpeningHoursTimeSlot.Parse(x, configuration));
+            Label = json.GetString("label")!;
+            Items = json.GetArrayItems("items", x => OpeningHoursTimeSlot.Parse(x, configuration));
         }
 
         #endregion
@@ -99,17 +104,18 @@ namespace Limbo.Umbraco.Time.Models.OpeningHours {
         /// <param name="dayOfWeek">The day of the week.</param>
         /// <returns>Returns an instance of <see cref="OpeningHoursDayItem"/>.</returns>
         public static OpeningHoursDayItem GetEmptyModel(DayOfWeek dayOfWeek) {
-            return new OpeningHoursDayItem(JObject.Parse($"{{label:\"{dayOfWeek}\",items:[]}}"), dayOfWeek, null);
+            return new OpeningHoursDayItem(JObject.Parse("{\"items\":[]}"), dayOfWeek, null);
         }
 
         /// <summary>
-        /// Gets an instance of <see cref="OpeningHoursTimeSlot"/> from the specified <see cref="JObject"/>.
+        /// Gets an instance of <see cref="OpeningHoursTimeSlot"/> from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
+        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <param name="dayOfWeek">The day of the week.</param>
         /// <param name="configuration">The opening hours configuration.</param>
-        public static OpeningHoursDayItem Parse(JObject obj, DayOfWeek dayOfWeek, OpeningHoursConfiguration configuration) {
-            return obj == null ? null : new OpeningHoursDayItem(obj, dayOfWeek, configuration);
+        [return: NotNullIfNotNull("json")]
+        public static OpeningHoursDayItem? Parse(JObject? json, DayOfWeek dayOfWeek, OpeningHoursConfiguration configuration) {
+            return json == null ? null : new OpeningHoursDayItem(json, dayOfWeek, configuration);
         }
 
         #endregion

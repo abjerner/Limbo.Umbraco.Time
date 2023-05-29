@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
+#pragma warning disable CS1591
+
 namespace Limbo.Umbraco.Time.Models.OpeningHours {
 
     public class OpeningHoursDayOffset {

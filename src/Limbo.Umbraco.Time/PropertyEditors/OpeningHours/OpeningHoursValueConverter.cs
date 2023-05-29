@@ -1,7 +1,7 @@
 ﻿using System;
 using Limbo.Umbraco.Time.Models.OpeningHours;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json;
+using Skybrud.Essentials.Json.Newtonsoft;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Extensions;
@@ -24,8 +24,8 @@ namespace Limbo.Umbraco.Time.PropertyEditors.OpeningHours {
         }
 
         /// <inheritdoc />
-        public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
-            return inter is JObject json ? OpeningHoursModel.Parse(json, propertyType.DataType.Configuration as OpeningHoursConfiguration) : null;
+        public override object ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
+            return OpeningHoursModel.Create(inter as JObject, propertyType.DataType.Configuration as OpeningHoursConfiguration);
         }
 
         /// <inheritdoc />

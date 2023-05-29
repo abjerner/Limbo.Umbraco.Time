@@ -119,16 +119,15 @@ namespace Limbo.Umbraco.Time.Models.OpeningHours {
                 string key = "weekdays." + (int) dayOfWeek;
 
                 // Parse and add the day to the dictionary
-                _weekdays.Add(dayOfWeek, json.GetObject(key, x => OpeningHoursDayItem.Parse(x, dayOfWeek, configuration)));
+                _weekdays.Add(dayOfWeek, json.GetObject(key, x => OpeningHoursDayItem.Parse(x, dayOfWeek, configuration)) ?? OpeningHoursDayItem.GetEmptyModel(dayOfWeek));
 
             }
 
             // Parse holidays
-            Holidays = json.GetArrayItems("holidays", OpeningHoursHolidayItem.Parse);
+            Holidays = json.GetArrayItems("holidays", OpeningHoursHolidayItem.Parse)!;
 
             // Create a dictionary with the holidays - for O(1) lookups
             _holidays = Holidays
-                .Where(x => x.IsValid)
                 .DistinctBy(x => x.Date.ToString("yyyyMMdd"))
                 .ToDictionary(x => x.Date.ToString("yyyyMMdd"));
 
@@ -298,22 +297,13 @@ namespace Limbo.Umbraco.Time.Models.OpeningHours {
         #region Static methods
 
         /// <summary>
-        /// Gets an instance of <see cref="OpeningHoursModel"/> from the specified <see cref="JObject"/>.
-        /// </summary>
-        /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
-        public static OpeningHoursModel Parse(JObject json) {
-            return json == null ? null : new OpeningHoursModel(json, null);
-        }
-
-        /// <summary>
-        /// Gets an instance of <see cref="OpeningHoursModel"/> from the specified <see cref="JObject"/>.
+        /// Creates and returns an instance of <see cref="OpeningHoursModel"/> based on the specified <see cref="JObject"/>.
         /// </summary>
         /// <param name="json">The instance of <see cref="JObject"/> to parse.</param>
         /// <param name="configuration">The opening hours configuration.</param>
-        public static OpeningHoursModel Parse(JObject json, OpeningHoursConfiguration? configuration) {
-            return json == null ? null : new OpeningHoursModel(json, configuration);
+        public static OpeningHoursModel Create(JObject? json, OpeningHoursConfiguration? configuration) {
+            return new OpeningHoursModel(json ?? new JObject(), configuration ?? new OpeningHoursConfiguration());
         }
-
 
         #endregion
 
