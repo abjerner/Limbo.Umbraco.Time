@@ -1,5 +1,4 @@
-﻿<div ng-controller="Limbo.Umbraco.Time.OpeningHours.Controller">
-    <limbo-time-weekdays ng-if="!model.config.hideWeekdays" value="model.value.weekdays" config="model.config"></limbo-time-weekdays>
-    <limbo-time-holidays ng-if="!model.config.hideHolidays" value="model.value.holidays" config="model.config"></limbo-time-holidays>
-    <pre>{{model.value | json}}</pre>
+﻿<div ng-controller="Limbo.Umbraco.Time.OpeningHours.Controller as vm">
+    <limbo-time-weekdays ng-if="!model.config.hideWeekdays" value="vm.value.weekdays" config="model.config"></limbo-time-weekdays>
+    <limbo-time-holidays ng-if="!model.config.hideHolidays" value="vm.value.holidays" config="model.config"></limbo-time-holidays>
 </div>

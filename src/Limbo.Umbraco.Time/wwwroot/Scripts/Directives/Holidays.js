@@ -38,6 +38,7 @@
                 };
 
                 // Append the day to the holidays array
+                if (!Array.isArray(scope.value)) scope.value = [];
                 scope.value.push(day);
 
             };
@@ -45,6 +46,7 @@
             // Removes the day at the specified index
             scope.removeDay = function (index) {
                 scope.value.splice(index, 1);
+                if (Array.isArray(scope.value) && scope.value.length === 0) scope.value = null;
             };
 
             // Adds a new item to the specified day

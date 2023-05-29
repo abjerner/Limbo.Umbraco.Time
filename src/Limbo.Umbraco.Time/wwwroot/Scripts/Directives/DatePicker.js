@@ -1,6 +1,4 @@
-﻿console.log("meh");
-
-angular.module("umbraco.directives").directive("limboTimeDatePicker", function () {
+﻿angular.module("umbraco.directives").directive("limboTimeDatePicker", function () {
     return {
         scope: {
             value: "="

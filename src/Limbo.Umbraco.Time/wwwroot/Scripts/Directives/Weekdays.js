@@ -53,15 +53,23 @@
 
                 // Populate the shadow array of weekdays
                 weekdays.forEach(function (day) {
-                    scope.value[day.id].$label = day.name;
-                    scope.value[day.id].$key = `limboOpeningHours_${day.alias}`;
-                    scope.weekdays.push(scope.value[day.id]);
+                    if (!scope.value[day.id]) {
+                        const d = {$id: day.id, $label: day.name, $key: `limboOpeningHours_${day.alias}`, items:[]};
+                        scope.weekdays.push(d);
+                    } else {
+                        scope.value[day.id].$id = day.id;
+                        scope.value[day.id].$label = day.name;
+                        scope.value[day.id].$key = `limboOpeningHours_${day.alias}`;
+                        scope.weekdays.push(scope.value[day.id]);
+                    }
                 });
 
             }
 
             // Adds a new item to the specified day
             scope.addItem = function (day) {
+                if (!scope.value)  scope.value = {};
+                if (!scope.value[day.$id]) scope.value[day.$id] = day;
                 day.items.push({
                     opens: "09:00",
                     closes: "17:00"
@@ -71,6 +79,8 @@
             // Removes an item for day at the specified index
             scope.removeItem = function (day, index) {
                 day.items.splice(index, 1);
+                if (day.items.length == 0) delete scope.value[day.$id];
+                if (Object.keys(scope.value).length === 0) scope.value = null;
             };
 
             initModel();
