@@ -1,6 +1,6 @@
 # Limbo.Umbraco.Time
 
-**Limbo.Umbraco.Time** is a small package for Umbraco 10 that adds three new property editors:
+**Limbo.Umbraco.Time** is a small package for Umbraco 10+ that adds three new property editors:
 
 - [**Date Picker**](#date-picker) - returning an instance of [EssentialsDate](https://packages.skybrud.dk/skybrud.essentials/reference/time/essentialsdate/)
 - [**Time Picker**](#time-picker) - returning an instance of [TimeOffset](https://github.com/abjerner/Limbo.Umbraco.Time/blob/master/src/Limbo.Umbraco.Time/Models/TimeOffset.cs)
@@ -8,24 +8,33 @@
 
 While Umbraco already features a property editor for picking a date (or date and time), the property editors in this package handles more specific use cases (eg. the date picker will return EssentialsDate instead of DateTime).
 
+
+<br /><br />
+
 ## Installation
 
-The Umbraco 10 version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.Time/1.0.0). To install the package, you can use either .NET CLI:
+The Umbraco 10+ version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.Time/1.0.0-beta001). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.Time --version 1.0.0
+dotnet add package Limbo.Umbraco.Time --version 1.0.0-beta001
 ```
 
 or the older NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.Time -Version 1.0.0
+Install-Package Limbo.Umbraco.Time -Version 1.0.0-beta001
 ```
+
+
+<br /><br />
 
 ## Screenshots
 
 *Examples of the date and time property editors respectively*
 ![image](https://user-images.githubusercontent.com/3634580/89598990-8d74f800-d85e-11ea-8272-317dcfd3ce37.png)
+
+
+<br /><br />
 
 ## Date Picker
 
@@ -37,6 +46,9 @@ Calling the `ToString` method on said class will result in a string representati
 
 As of this time, the date picker currently doesn't have any prevalues (data type configuration).
 
+
+<br /><br />
+
 ## Time Picker
 
 The time picker uses a custom view for letting editors pick a time without any relation to a specific date. The picker returns an instance of `TimeOffset` representing the selected time, and the `Hours` and `Minutes` properties can be used to read the selected selected time.
@@ -46,6 +58,9 @@ Calling the `ToString` method will result in a string representation of the date
 The output format of the `ToString` method can be controlled via the *Output format* prevalue option in the data type configuration. The format is that of the [TimeSpan](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-timespan-format-strings) class in .NET. Notice that the format is different from that of the `DateTime` class, so a format like `hh\:mm` will result is something like `15:45` (which for `DateTime` would have been `HH:mm`).
 
 ![image](https://user-images.githubusercontent.com/3634580/89651798-c0ea6d80-d8c4-11ea-9061-2098428d8ee9.png)
+
+
+<br /><br />
 
 ## UNIX Timestamp
 
