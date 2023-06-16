@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Skybrud.Essentials.Strings.Extensions;
 using Umbraco.Cms.Core.Manifest;
 
 namespace Limbo.Umbraco.Time.Manifests {
@@ -10,7 +9,9 @@ namespace Limbo.Umbraco.Time.Manifests {
         /// <inheritdoc />
         public void Filter(List<PackageManifest> manifests) {
             manifests.Add(new PackageManifest {
-                PackageName = TimePackage.Alias.ToKebabCase(),
+                AllowPackageTelemetry = true,
+                PackageName = TimePackage.Name,
+                Version = TimePackage.InformationalVersion,
                 BundleOptions = BundleOptions.Independent,
                 Scripts = new[] {
                     $"/App_Plugins/{TimePackage.Alias}/Scripts/Controllers/TimePicker.js",

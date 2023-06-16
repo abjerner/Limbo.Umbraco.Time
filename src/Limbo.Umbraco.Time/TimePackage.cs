@@ -25,9 +25,14 @@ namespace Limbo.Umbraco.Time {
         public static readonly Version Version = typeof(TimePackage).Assembly.GetName().Version!;
 
         /// <summary>
+        /// Gets the informational version of the package.
+        /// </summary>
+        public static readonly string InformationalVersion = FileVersionInfo.GetVersionInfo(typeof(TimePackage).Assembly.Location).ProductVersion!;
+
+        /// <summary>
         /// Gets the semantic version of the package.
         /// </summary>
-        public static readonly SemVersion SemVersion = FileVersionInfo.GetVersionInfo(typeof(TimePackage).Assembly.Location).ProductVersion!;
+        public static readonly SemVersion SemVersion = InformationalVersion;
 
     }
 
