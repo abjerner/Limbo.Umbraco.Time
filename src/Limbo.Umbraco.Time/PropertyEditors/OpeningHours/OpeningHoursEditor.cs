@@ -2,6 +2,8 @@
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
 
+#pragma warning disable CS1591
+
 namespace Limbo.Umbraco.Time.PropertyEditors.OpeningHours;
 
 /// <summary>
@@ -15,15 +17,15 @@ public class OpeningHoursEditor : DataEditor {
 
     #region Constants
 
-    internal const string EditorAlias = "Limbo.Umbraco.Time.OpeningHours";
+    public const string EditorAlias = "Limbo.Umbraco.Time.OpeningHours";
 
-    internal const string EditorName = "Limbo Opening Hours";
+    public const string EditorName = "Limbo Opening Hours";
 
-    internal const string EditorGroup = "Limbo";
+    public const string EditorGroup = "Limbo";
 
-    internal const string EditorIcon = "icon-calendar color-limbo";
+    public const string EditorIcon = "icon-calendar color-limbo";
 
-    internal const string EditorView = "/App_Plugins/Limbo.Umbraco.Time/Views/Editors/OpeningHours.html";
+    public const string EditorView = "/App_Plugins/Limbo.Umbraco.Time/Views/Editors/OpeningHours.html";
 
     #endregion
 

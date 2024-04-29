@@ -2,6 +2,8 @@
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
 
+#pragma warning disable CS1591
+
 namespace Limbo.Umbraco.Time.PropertyEditors.UnixTime;
 
 /// <summary>
@@ -15,12 +17,14 @@ public class UnixTimestampEditor : DataEditor {
 
     #region Constants
 
-    internal const string EditorAlias = "Limbo.Umbraco.UnixTimestamp";
+    public const string EditorAlias = "Limbo.Umbraco.UnixTimestamp";
 
-    internal const string EditorView = "/App_Plugins/Limbo.Umbraco.Time/Views/Editors/UnixTimestamp.html";
+    public const string EditorView = "/App_Plugins/Limbo.Umbraco.Time/Views/Editors/UnixTimestamp.html";
 
-    // Value type must be "STRING" to support zero as a value
-    internal const string EditorValueType = ValueTypes.String;
+    /// <remarks>
+    /// Value type must be "STRING" to support zero as a value
+    /// </remarks>
+    public const string EditorValueType = ValueTypes.String;
 
     #endregion
 

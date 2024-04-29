@@ -2,6 +2,8 @@
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
 
+#pragma warning disable CS1591
+
 namespace Limbo.Umbraco.Time.PropertyEditors.Time;
 
 /// <summary>
@@ -15,9 +17,9 @@ public class TimeEditor : DataEditor {
 
     #region Constants
 
-    internal const string EditorAlias = "Limbo.Umbraco.Time";
+    public const string EditorAlias = "Limbo.Umbraco.Time";
 
-    internal const string EditorView = "/App_Plugins/Limbo.Umbraco.Time/Views/Editors/TimePicker.html";
+    public const string EditorView = "/App_Plugins/Limbo.Umbraco.Time/Views/Editors/TimePicker.html";
 
     #endregion
 

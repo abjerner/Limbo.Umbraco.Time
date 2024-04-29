@@ -2,6 +2,8 @@
 using Umbraco.Cms.Core.PropertyEditors;
 using Umbraco.Cms.Core.Services;
 
+#pragma warning disable CS1591
+
 namespace Limbo.Umbraco.Time.PropertyEditors.DateTime;
 
 /// <summary>
@@ -15,11 +17,11 @@ public class DateTimeEditor : DataEditor {
 
     #region Constants
 
-    internal const string EditorAlias = "Limbo.Umbraco.DateTime";
+    public const string EditorAlias = "Limbo.Umbraco.DateTime";
 
-    internal const string EditorView = "/App_Plugins/Limbo.Umbraco.Time/Views/Editors/DateTime.html";
+    public const string EditorView = "/App_Plugins/Limbo.Umbraco.Time/Views/Editors/DateTime.html";
 
-    internal const string EditorValueType = ValueTypes.DateTime;
+    public const string EditorValueType = ValueTypes.DateTime;
 
     #endregion
 
