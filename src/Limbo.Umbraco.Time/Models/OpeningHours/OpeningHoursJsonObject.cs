@@ -3,16 +3,14 @@ using Skybrud.Essentials.Json.Newtonsoft;
 
 #pragma warning disable CS1591
 
-namespace Limbo.Umbraco.Time.Models.OpeningHours {
+namespace Limbo.Umbraco.Time.Models.OpeningHours;
 
-    public class OpeningHoursJsonObject : JsonObjectBase {
+public class OpeningHoursJsonObject : JsonObjectBase {
 
-        #region Constructors
+    #region Constructors
 
-        protected OpeningHoursJsonObject(JObject? json) : base(json) { }
+    protected OpeningHoursJsonObject(JObject? json) : base(json) { }
 
-        #endregion
-
-    }
+    #endregion
 
 }
