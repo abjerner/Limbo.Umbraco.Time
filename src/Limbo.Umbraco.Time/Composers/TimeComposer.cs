@@ -4,9 +4,11 @@ using Limbo.Umbraco.Time.Providers;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
 
+#pragma warning disable CS1591
+
 namespace Limbo.Umbraco.Time.Composers;
 
-internal class TimeComposer : IComposer {
+public class TimeComposer : IComposer {
 
     public void Compose(IUmbracoBuilder builder) {
 

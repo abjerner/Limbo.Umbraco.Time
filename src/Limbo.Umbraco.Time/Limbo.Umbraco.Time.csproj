@@ -14,9 +14,11 @@
     <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
     <Title>Limbo Time</Title>
     <Product>Limbo Time</Product>
+    <AssemblyTitle>Limbo Title</AssemblyTitle>
     <Description>Property editors for picking dates and time in Umbraco 10+.</Description>
   </PropertyGroup>
 
+  <!-- Information for the NuGet package -->
   <PropertyGroup>
     <Title>Limbo Time</Title>
     <PackageTags>Skybrud, Limbo, Umbraco, Date, Time, Umbraco-Marketplace</PackageTags>
@@ -26,6 +28,14 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/abjerner/Limbo.Umbraco.Time/tree/v1/main</RepositoryUrl>
   </PropertyGroup>
+
+  <!-- Include additional metadata in the assembly -->
+  <ItemGroup>
+    <AssemblyMetadata Include="PackageProjectUrl" Value="https://packages.limbo.works/limbo.umbraco.time/" />
+    <AssemblyMetadata Include="DocumentationUrl" Value="https://packages.limbo.works/limbo.umbraco.time/docs/v1/" />
+    <AssemblyMetadata Include="NuGetUrl" Value="https://www.nuget.org/packages/Limbo.Umbraco.Time" />
+    <AssemblyMetadata Include="UmbracoMarketplaceUrl" Value="https://marketplace.umbraco.com/package/limbo.umbraco.time" />
+  </ItemGroup>
 
   <ItemGroup>
     <!-- Include NuGet dependencies -->
