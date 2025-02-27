@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Skybrud.Essentials.Strings.Extensions;
+using Skybrud.Essentials.Time;
 
 namespace Limbo.Umbraco.Time.Models.OpeningHours;
 
@@ -46,12 +47,12 @@ public class OpeningHoursDay {
     /// <summary>
     /// Gets whether the day is today.
     /// </summary>
-    public bool IsToday => HelloTimeUtils.IsToday(Date);
+    public bool IsToday => TimeUtils.IsToday(Date);
 
     /// <summary>
     /// Gets whether the day is tomorrow.
     /// </summary>
-    public bool IsTomorrow => HelloTimeUtils.IsTomorrow(Date);
+    public bool IsTomorrow => TimeUtils.IsTomorrow(Date);
 
     /// <summary>
     /// Gets whether current time is today and within the opening hours.
