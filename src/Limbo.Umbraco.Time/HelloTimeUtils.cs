@@ -27,7 +27,7 @@ internal static class HelloTimeUtils {
     /// <summary>
     /// Gets whether the specified <code>date</code> is today.
     /// </summary>
-    /// <param name="date">The date date.</param>
+    /// <param name="date">The date.</param>
     /// <returns>Returns <code>true</code> if <code>date</code> is today, otherwise <code>false</code>.</returns>
     public static bool IsToday(DateTime date) {
         return IsSameDay(date, DateTime.Today);
@@ -36,7 +36,7 @@ internal static class HelloTimeUtils {
     /// <summary>
     /// Gets whether the specified <code>date</code> is today.
     /// </summary>
-    /// <param name="date">The date date.</param>
+    /// <param name="date">The date.</param>
     /// <returns>Returns <code>true</code> if <code>date</code> is today, otherwise <code>false</code>.</returns>
     public static bool IsToday(DateTimeOffset date) {
         return IsSameDay(date, DateTimeOffset.Now);
@@ -45,7 +45,7 @@ internal static class HelloTimeUtils {
     /// <summary>
     /// Gets whether the specified <code>date</code> is tomorrow.
     /// </summary>
-    /// <param name="date">The date date.</param>
+    /// <param name="date">The date.</param>
     /// <returns>Returns <code>true</code> if <code>date</code> is tomorrow, otherwise <code>false</code>.</returns>
     public static bool IsTomorrow(DateTime date) {
         return IsSameDay(date, DateTime.Today.AddDays(1));
@@ -54,7 +54,7 @@ internal static class HelloTimeUtils {
     /// <summary>
     /// Gets whether the specified <code>date</code> is tomorrow.
     /// </summary>
-    /// <param name="date">The date date.</param>
+    /// <param name="date">The date.</param>
     /// <returns>Returns <code>true</code> if <code>date</code> is tomorrow, otherwise <code>false</code>.</returns>
     public static bool IsTomorrow(DateTimeOffset date) {
         return IsSameDay(date, DateTimeOffset.Now.AddDays(1));
