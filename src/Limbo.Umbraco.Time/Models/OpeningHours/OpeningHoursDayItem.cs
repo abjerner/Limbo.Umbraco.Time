@@ -5,8 +5,8 @@ using System.Globalization;
 using Limbo.Umbraco.Time.PropertyEditors.OpeningHours;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Converters.Enums;
-using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Json.Newtonsoft.Converters.Enums;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Essentials.Strings.Extensions;
 
 namespace Limbo.Umbraco.Time.Models.OpeningHours;
@@ -21,7 +21,7 @@ public class OpeningHoursDayItem : OpeningHoursJsonObject {
     #region Properties
 
     /// <summary>
-    /// Gets the day of the week - eg. <see cref="System.DayOfWeek.Monday"/>.
+    /// Gets the day of the week - e.g. <see cref="System.DayOfWeek.Monday"/>.
     /// </summary>
     [JsonProperty("day", Order = 1)]
     [JsonConverter(typeof(EnumCamelCaseConverter))]
