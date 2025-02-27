@@ -1,9 +1,14 @@
-# Limbo.Umbraco.Time
+# Limbo Time
 
-**Limbo.Umbraco.Time** is a small package for Umbraco 10+ that adds three new property editors:
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/abjerner/Limbo.Umbraco.Time/blob/v13/main/LICENSE.md)
+[![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.Time.svg)](https://www.nuget.org/packages/Limbo.Umbraco.Time)
+[![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.Time.svg)](https://www.nuget.org/packages/Limbo.Umbraco.Time)
+[![Umbraco Marketplace](https://img.shields.io/badge/umbraco-marketplace-%233544B1)](https://marketplace.umbraco.com/package/limbo.umbraco.time)
+[![Limbo.Umbraco.Time at packages.limbo.works](https://img.shields.io/badge/limbo-packages-blue)](https://packages.limbo.works/limbo.umbraco.time/)
+
+**Limbo.Umbraco.Time** is a small package for Umbraco that adds some new property editorsfor working with date and time:
 
 - [**Date Picker**](#date-picker) - returning an instance of [EssentialsDate](https://packages.skybrud.dk/skybrud.essentials/reference/time/essentialsdate/)
-<!-- - [**Date Time Picker**](#date-time-picker) - returning an instance of [EssentialsTime](https://packages.skybrud.dk/skybrud.essentials/reference/time/essentialstime/)-->
 - [**Time Picker**](#time-picker) - returning an instance of [TimeOffset](https://github.com/abjerner/Limbo.Umbraco.Time/blob/master/src/Limbo.Umbraco.Time/Models/TimeOffset.cs)
 - [**UNIX Timestamp**](#unix-timestamp) - returning an instance of [EssentialsTime](https://packages.skybrud.dk/skybrud.essentials/reference/time/essentialstime)
 - [**Opening Hours**](#opening-hours) - returning an instance of [OpeningHoursModel](https://github.com/abjerner/Limbo.Umbraco.Time/blob/v13/main/src/Limbo.Umbraco.Time/Models/OpeningHours/OpeningHoursModel.cs)
@@ -15,16 +20,16 @@ While Umbraco already features a property editor for picking a date (or date and
 
 ## Installation
 
-The Umbraco 10+ version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.Time/10.0.0). To install the package, you can use either .NET CLI:
+The Umbraco 13 version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.Time/13.0.0). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.Time --version 10.0.0
+dotnet add package Limbo.Umbraco.Time --version 13.0.0
 ```
 
 or the older NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.Time -Version 10.0.0
+Install-Package Limbo.Umbraco.Time -Version 13.0.0
 ```
 
 
