@@ -20,7 +20,7 @@
         vm.value = { weekdays: {}, holidays: [] };
     } else {
         vm.value = {};
-        vm.value.weekdays = Object.keys($scope.model.value.weekdays).length > 0 ? $scope.model.value.weekdays : {};
+        vm.value.weekdays = $scope.model.value.weekdays && Object.keys($scope.model.value.weekdays).length > 0 ? $scope.model.value.weekdays : {};
         vm.value.holidays = Array.isArray($scope.model.value.holidays) ? $scope.model.value.holidays : [];
     }
 
