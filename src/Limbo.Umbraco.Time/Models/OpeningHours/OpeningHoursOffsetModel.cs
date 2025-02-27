@@ -12,12 +12,12 @@ public class OpeningHoursOffsetModel {
     /// <summary>
     /// Gets a reference to the time zone.
     /// </summary>
-    public TimeZoneInfo TimeZone { get; private set; }
+    public TimeZoneInfo TimeZone { get; }
 
     /// <summary>
     /// Gets a reference to the underlying <see cref="OpeningHoursModel"/>.
     /// </summary>
-    public OpeningHoursModel Model { get; private set; }
+    public OpeningHoursModel Model { get; }
 
     /// <summary>
     /// Gets whether the entity (store, company or similar) is currently open.

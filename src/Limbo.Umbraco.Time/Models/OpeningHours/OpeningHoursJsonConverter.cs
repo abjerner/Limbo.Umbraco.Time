@@ -18,7 +18,7 @@ public class OpeningHoursJsonConverter : JsonConverter {
                 serializer.Serialize(writer, time.ToString("yyyy-MM-dd"));
                 return;
             case TimeSpan span:
-                serializer.Serialize(writer, span.ToString().Substring(0, 5));
+                serializer.Serialize(writer, span.ToString()[..5]);
                 return;
             default:
                 serializer.Serialize(writer, value);

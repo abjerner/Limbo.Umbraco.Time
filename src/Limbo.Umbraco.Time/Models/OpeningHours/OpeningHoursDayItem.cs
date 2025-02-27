@@ -58,25 +58,19 @@ public class OpeningHoursDayItem : OpeningHoursJsonObject {
     /// Gets where the entity has at least one open time slot throughout the day.
     /// </summary>
     [JsonIgnore]
-    public bool IsOpen {
-        get { return Items is { Count: > 0 }; }
-    }
+    public bool IsOpen => Items is { Count: > 0 };
 
     /// <summary>
     /// Gets whether the entity is closed throughout the entire day.
     /// </summary>
     [JsonIgnore]
-    public bool IsClosed {
-        get { return !IsOpen; }
-    }
+    public bool IsClosed => !IsOpen;
 
     /// <summary>
     /// Gets whether the entity is during multiple periods throughout the day.
     /// </summary>
     [JsonIgnore]
-    public bool HasMultiple {
-        get { return Items is { Count: > 1 }; }
-    }
+    public bool HasMultiple => Items is { Count: > 1 };
 
     #endregion
 

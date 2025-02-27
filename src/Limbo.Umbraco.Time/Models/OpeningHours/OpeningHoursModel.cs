@@ -124,7 +124,7 @@ public class OpeningHoursModel : OpeningHoursJsonObject {
         }
 
         // Parse holidays
-        Holidays = json.GetArrayItems("holidays", OpeningHoursHolidayItem.Parse)!;
+        Holidays = json.GetArrayItems("holidays", OpeningHoursHolidayItem.Parse);
 
         // Create a dictionary with the holidays - for O(1) lookups
         _holidays = Holidays
