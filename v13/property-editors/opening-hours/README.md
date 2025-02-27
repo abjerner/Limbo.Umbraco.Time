@@ -1,4 +1,4 @@
-## Opening Hours
+# Opening Hours
 
 The package features a custom property editor for specifying opening hours. Opening hours may be specified for the normal workday, also with support for multiple open time slots during the day. The property editor also allows adding special days that may be closed or having different opening hours.
 

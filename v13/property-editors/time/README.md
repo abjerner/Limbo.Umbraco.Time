@@ -1,4 +1,4 @@
-## Time Picker
+# Time Picker
 
 The time picker uses a custom view for letting editors pick a time without any relation to a specific date. The picker returns an instance of `TimeOffset` representing the selected time, and the `Hours` and `Minutes` properties can be used to read the selected selected time.
 
