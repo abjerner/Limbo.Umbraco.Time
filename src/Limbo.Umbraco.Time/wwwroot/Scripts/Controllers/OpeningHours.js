@@ -31,7 +31,6 @@
             flag = false;
             return;
         }
-        console.log("changed");
         $scope.model.value = {};
         if (value.weekdays && Object.keys(value.weekdays).length > 0) $scope.model.value.weekdays = value.weekdays;
         if (Array.isArray(value.holidays) && value.holidays.length > 0) $scope.model.value.holidays = value.holidays;
