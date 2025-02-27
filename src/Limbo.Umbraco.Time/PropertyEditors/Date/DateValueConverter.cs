@@ -8,13 +8,13 @@ using Umbraco.Extensions;
 namespace Limbo.Umbraco.Time.PropertyEditors.Date;
 
 /// <summary>
-/// Value converter for <see cref="DateEditor"/>.
+/// Value converter for <see cref="DatePropertyEditor"/>.
 /// </summary>
 public class DateValueConverter : DatePickerValueConverter {
 
     /// <inheritdoc />
     public override bool IsConverter(IPublishedPropertyType propertyType) {
-        return propertyType.EditorAlias.InvariantEquals(DateEditor.EditorAlias);
+        return propertyType.EditorAlias.InvariantEquals(DatePropertyEditor.EditorAlias);
     }
 
     /// <inheritdoc />

@@ -9,13 +9,13 @@ using Umbraco.Extensions;
 namespace Limbo.Umbraco.Time.PropertyEditors.OpeningHours;
 
 /// <summary>
-/// Value converter for <see cref="OpeningHoursEditor"/>.
+/// Value converter for <see cref="OpeningHoursPropertyEditor"/>.
 /// </summary>
 public class OpeningHoursValueConverter : PropertyValueConverterBase {
 
     /// <inheritdoc />
     public override bool IsConverter(IPublishedPropertyType propertyType) {
-        return propertyType.EditorAlias.InvariantEquals(OpeningHoursEditor.EditorAlias);
+        return propertyType.EditorAlias.InvariantEquals(OpeningHoursPropertyEditor.EditorAlias);
     }
 
     /// <inheritdoc />

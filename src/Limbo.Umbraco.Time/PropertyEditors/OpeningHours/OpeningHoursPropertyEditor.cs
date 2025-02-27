@@ -10,7 +10,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.OpeningHours;
 /// Represents a property editor for specifying opening hours.
 /// </summary>
 [DataEditor(EditorAlias, EditorType.PropertyValue, EditorName, EditorView, ValueType = ValueTypes.Json, Group = EditorGroup, Icon = EditorIcon)]
-public class OpeningHoursEditor : DataEditor {
+public class OpeningHoursPropertyEditor : DataEditor {
 
     private readonly IIOHelper _ioHelper;
     private readonly IEditorConfigurationParser _editorConfigurationParser;
@@ -32,10 +32,10 @@ public class OpeningHoursEditor : DataEditor {
     #region Constructors
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="OpeningHoursEditor"/> class.
+    /// Initializes a new instance of the <see cref="OpeningHoursPropertyEditor"/> class.
     /// </summary>
 
-    public OpeningHoursEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory) {
+    public OpeningHoursPropertyEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory) {
         _ioHelper = ioHelper;
         _editorConfigurationParser = editorConfigurationParser;
     }

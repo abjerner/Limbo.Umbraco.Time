@@ -3,7 +3,7 @@
 namespace Limbo.Umbraco.Time.PropertyEditors.Date;
 
 /// <summary>
-/// Configuration for <see cref="DateEditor"/>.
+/// Configuration for <see cref="DatePropertyEditor"/>.
 /// </summary>
 public class DateConfiguration {
 

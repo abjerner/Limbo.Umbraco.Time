@@ -10,7 +10,7 @@ namespace Limbo.Umbraco.Time.PropertyEditors.Time;
 /// Represents a time offset property editor.
 /// </summary>
 [DataEditor(EditorAlias, EditorType.PropertyValue, "Limbo Time", EditorView, Group = "Limbo", Icon = "icon-time color-limbo", ValueType = ValueTypes.String)]
-public class TimeEditor : DataEditor {
+public class TimePropertyEditor : DataEditor {
 
     private readonly IIOHelper _ioHelper;
     private readonly IEditorConfigurationParser _editorConfigurationParser;
@@ -26,9 +26,9 @@ public class TimeEditor : DataEditor {
     #region Constructors
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="TimeEditor"/> class.
+    /// Initializes a new instance of the <see cref="TimePropertyEditor"/> class.
     /// </summary>
-    public TimeEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory) {
+    public TimePropertyEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory) {
         _ioHelper = ioHelper;
         _editorConfigurationParser = editorConfigurationParser;
     }

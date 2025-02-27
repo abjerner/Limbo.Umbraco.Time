@@ -8,7 +8,7 @@ using Umbraco.Cms.Core.Services;
 namespace Limbo.Umbraco.Time.PropertyEditors.Date;
 
 /// <summary>
-/// Configuration editor for <see cref="DateEditor"/>.
+/// Configuration editor for <see cref="DatePropertyEditor"/>.
 /// </summary>
 public class DateConfigurationEditor : ConfigurationEditor<DateConfiguration> {
 

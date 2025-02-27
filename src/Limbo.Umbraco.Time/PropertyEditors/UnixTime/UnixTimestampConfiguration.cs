@@ -3,7 +3,7 @@
 namespace Limbo.Umbraco.Time.PropertyEditors.UnixTime;
 
 /// <summary>
-/// Configuration for <see cref="UnixTimestampEditor"/>.
+/// Configuration for <see cref="UnixTimestampPropertyEditor"/>.
 /// </summary>
 public class UnixTimestampConfiguration {
 

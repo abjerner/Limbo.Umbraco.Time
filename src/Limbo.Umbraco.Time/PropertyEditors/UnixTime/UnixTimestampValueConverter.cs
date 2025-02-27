@@ -26,7 +26,7 @@ public class UnixTimestampValueConverter : PropertyValueConverterBase {
     #region Member methods
 
     public override bool IsConverter(IPublishedPropertyType propertyType) {
-        return propertyType.EditorAlias.InvariantEquals(UnixTimestampEditor.EditorAlias);
+        return propertyType.EditorAlias.InvariantEquals(UnixTimestampPropertyEditor.EditorAlias);
     }
 
     public override object? ConvertSourceToIntermediate(IPublishedElement owner, IPublishedPropertyType propertyType, object? source, bool preview) {

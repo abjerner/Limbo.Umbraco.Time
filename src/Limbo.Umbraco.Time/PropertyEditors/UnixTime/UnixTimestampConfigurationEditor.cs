@@ -5,7 +5,7 @@ using Umbraco.Cms.Core.Services;
 namespace Limbo.Umbraco.Time.PropertyEditors.UnixTime;
 
 /// <summary>
-/// Configuration editor for <see cref="UnixTimestampEditor"/>.
+/// Configuration editor for <see cref="UnixTimestampPropertyEditor"/>.
 /// </summary>
 public class UnixTimestampConfigurationEditor : ConfigurationEditor<UnixTimestampConfiguration> {
 

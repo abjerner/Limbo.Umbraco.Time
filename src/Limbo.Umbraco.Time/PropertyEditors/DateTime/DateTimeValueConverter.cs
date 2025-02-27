@@ -25,7 +25,7 @@ public class DateTimeValueConverter : PropertyValueConverterBase {
     #region Member methods
 
     public override bool IsConverter(IPublishedPropertyType propertyType) {
-        return propertyType.EditorAlias.InvariantEquals(DateTimeEditor.EditorAlias);
+        return propertyType.EditorAlias.InvariantEquals(DateTimePropertyEditor.EditorAlias);
     }
 
     public override PropertyCacheLevel GetPropertyCacheLevel(IPublishedPropertyType propertyType) {
@@ -51,10 +51,6 @@ public class DateTimeValueConverter : PropertyValueConverterBase {
             _ => ConvertToEssentialsTime(inter, nullable, config)
         };
 
-    }
-
-    public override object? ConvertIntermediateToXPath(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
-        return inter;
     }
 
     public override Type GetPropertyValueType(IPublishedPropertyType propertyType) {

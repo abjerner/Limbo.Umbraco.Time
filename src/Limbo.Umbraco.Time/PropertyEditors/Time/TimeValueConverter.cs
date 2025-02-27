@@ -7,13 +7,13 @@ using Umbraco.Extensions;
 namespace Limbo.Umbraco.Time.PropertyEditors.Time;
 
 /// <summary>
-/// Value converter for <see cref="TimeEditor"/>.
+/// Value converter for <see cref="TimePropertyEditor"/>.
 /// </summary>
 public class TimeValueConverter : PropertyValueConverterBase {
 
     /// <inheritdoc />
     public override bool IsConverter(IPublishedPropertyType propertyType) {
-        return propertyType.EditorAlias.InvariantEquals(TimeEditor.EditorAlias);
+        return propertyType.EditorAlias.InvariantEquals(TimePropertyEditor.EditorAlias);
     }
 
     /// <inheritdoc />
@@ -36,11 +36,6 @@ public class TimeValueConverter : PropertyValueConverterBase {
 
         };
 
-    }
-
-    /// <inheritdoc />
-    public override object? ConvertIntermediateToXPath(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
-        return inter;
     }
 
     /// <inheritdoc />
