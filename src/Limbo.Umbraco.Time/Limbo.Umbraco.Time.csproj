@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <VersionPrefix>1.0.0-beta002</VersionPrefix>
+    <VersionPrefix>10.0.0</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
     <Authors>Anders Bjerner</Authors>
@@ -15,7 +15,7 @@
     <Title>Limbo Time</Title>
     <Product>Limbo Time</Product>
     <AssemblyTitle>Limbo Title</AssemblyTitle>
-    <Description>Property editors for picking dates and time in Umbraco 10+.</Description>
+    <Description>Property editors for working with date and time in Umbraco.</Description>
   </PropertyGroup>
 
   <!-- Information for the NuGet package -->
@@ -23,26 +23,26 @@
     <Title>Limbo Time</Title>
     <PackageTags>Skybrud, Limbo, Umbraco, Date, Time, Umbraco-Marketplace</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://packages.limbo.works/limbo.umbraco.time/v1/</PackageProjectUrl>
+    <PackageProjectUrl>https://packages.limbo.works/limbo.umbraco.time/v10/</PackageProjectUrl>
     <PackageIcon>Limbo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/abjerner/Limbo.Umbraco.Time/tree/v1/main</RepositoryUrl>
+    <RepositoryUrl>https://github.com/abjerner/Limbo.Umbraco.Time/tree/v10/main</RepositoryUrl>
   </PropertyGroup>
 
   <!-- Include additional metadata in the assembly -->
   <ItemGroup>
     <AssemblyMetadata Include="PackageProjectUrl" Value="https://packages.limbo.works/limbo.umbraco.time/" />
-    <AssemblyMetadata Include="DocumentationUrl" Value="https://packages.limbo.works/limbo.umbraco.time/docs/v1/" />
+    <AssemblyMetadata Include="DocumentationUrl" Value="https://packages.limbo.works/limbo.umbraco.time/docs/v10/" />
     <AssemblyMetadata Include="NuGetUrl" Value="https://www.nuget.org/packages/Limbo.Umbraco.Time" />
     <AssemblyMetadata Include="UmbracoMarketplaceUrl" Value="https://marketplace.umbraco.com/package/limbo.umbraco.time" />
   </ItemGroup>
 
+  <!-- Include NuGet dependencies -->
   <ItemGroup>
-    <!-- Include NuGet dependencies -->
     <PackageReference Include="Skybrud.Essentials" Version="1.1.58" />
-    <PackageReference Include="Umbraco.Cms.Core" Version="[10.0.0,12.0)" />
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="[10.0.0,12.0)" />
-    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="[10.0.0,12.0)" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="[10.0.0,12.999)" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="[10.0.0,12.999)" />
+    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="[10.0.0,12.999)" />
   </ItemGroup>
 
   <!-- Backoffice assets -->

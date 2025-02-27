@@ -13,16 +13,16 @@ While Umbraco already features a property editor for picking a date (or date and
 
 ## Installation
 
-The Umbraco 10+ version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.Time/1.0.0-beta001). To install the package, you can use either .NET CLI:
+The Umbraco 10+ version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.Time/10.0.0). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.Time --version 1.0.0-beta001
+dotnet add package Limbo.Umbraco.Time --version 10.0.0
 ```
 
 or the older NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.Time -Version 1.0.0-beta001
+Install-Package Limbo.Umbraco.Time -Version 10.0.0
 ```
 
 
