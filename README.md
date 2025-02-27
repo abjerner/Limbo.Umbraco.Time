@@ -3,8 +3,10 @@
 **Limbo.Umbraco.Time** is a small package for Umbraco 10+ that adds three new property editors:
 
 - [**Date Picker**](#date-picker) - returning an instance of [EssentialsDate](https://packages.skybrud.dk/skybrud.essentials/reference/time/essentialsdate/)
+<!-- - [**Date Time Picker**](#date-time-picker) - returning an instance of [EssentialsTime](https://packages.skybrud.dk/skybrud.essentials/reference/time/essentialstime/)-->
 - [**Time Picker**](#time-picker) - returning an instance of [TimeOffset](https://github.com/abjerner/Limbo.Umbraco.Time/blob/master/src/Limbo.Umbraco.Time/Models/TimeOffset.cs)
 - [**UNIX Timestamp**](#unix-timestamp) - returning an instance of [EssentialsTime](https://packages.skybrud.dk/skybrud.essentials/reference/time/essentialstime)
+- [**Opening Hours**](#opening-hours) - returning an instance of [OpeningHoursModel](https://github.com/abjerner/Limbo.Umbraco.Time/blob/v13/main/src/Limbo.Umbraco.Time/Models/OpeningHours/OpeningHoursModel.cs)
 
 While Umbraco already features a property editor for picking a date (or date and time), the property editors in this package handles more specific use cases (eg. the date picker will return EssentialsDate instead of DateTime).
 
@@ -69,3 +71,15 @@ The UNIX timestamp property editor looks like the picker for date and time that 
 Aditionally, data types using this property editor may be configured to adjust the date and time to a specific time zone, which then is reflected in the `EssentialsTime` instance.
 
 Calling the `ToString` method on a `EssentialsTime` will result in a string representation of the date and time formatted using the [**ISO 8601** date time format](https://en.wikipedia.org/wiki/ISO_8601), which is `yyyy-MM-ddTHH:mm:ssK` - eg. `1988-08-17T08:37:00+02:00`. The same format is used when serializing the value using [Json.NET](https://www.newtonsoft.com/json).
+
+
+<br /><br />
+
+## Opening Hours
+
+The package features a custom property editor for specifying opening hours. Opening hours may be specified for the normal workday, also with support for multiple open time slots during the day. The property editor also allows adding special days that may be closed or having different opening hours.
+
+The value of a property using this property editor will be an instance of [OpeningHoursModel](https://github.com/abjerner/Limbo.Umbraco.Time/blob/v13/main/src/Limbo.Umbraco.Time/Models/OpeningHours/OpeningHoursModel.cs), which offers various ways to format the opening hours - as well as doing additional calculations based on the entered opening hours, such as whether a store is currently open.
+
+![image](https://github.com/user-attachments/assets/8f2d30a2-948b-4267-b760-2321c237b74e)
+
