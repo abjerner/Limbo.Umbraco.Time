@@ -108,7 +108,7 @@ public class OpeningHoursModel : OpeningHoursJsonObject {
         Configuration = configuration;
 
         // Parse the weekdays
-        _weekdays = new Dictionary<DayOfWeek, OpeningHoursDayItem>();
+        _weekdays = [];
 
         for (int i = 1; i <= 7; i++) {
 
