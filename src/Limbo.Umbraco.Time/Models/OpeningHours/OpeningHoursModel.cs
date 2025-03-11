@@ -119,7 +119,7 @@ public class OpeningHoursModel : OpeningHoursJsonObject {
             string key = "weekdays." + (int) dayOfWeek;
 
             // Parse and add the day to the dictionary
-            _weekdays.Add(dayOfWeek, json.GetObject(key, x => OpeningHoursDayItem.Parse(x, dayOfWeek, configuration)) ?? OpeningHoursDayItem.GetEmptyModel(dayOfWeek));
+            _weekdays.Add(dayOfWeek, json.GetObjectByPath(key, x => OpeningHoursDayItem.Parse(x, dayOfWeek, configuration)) ?? OpeningHoursDayItem.GetEmptyModel(dayOfWeek));
 
         }
 
