@@ -55,31 +55,37 @@ public class DateValueConverter : DatePickerValueConverter {
 
     }
 
-    private static object? ConvertToDateOnly(object? inter, bool nullable) {
+    private static DateOnly? ConvertToDateOnly(object? inter, bool nullable) {
 
         if (inter is not System.DateTime date) return nullable ? null : DateOnly.MinValue;
 
         if (date == System.DateTime.MinValue && nullable) return null;
 
+        TimePackageUtils.FixDateTimeKind(ref date);
+
         return new DateOnly(date.Year, date.Month, date.Day);
 
     }
 
-    private static object? ConvertToSystemDateTime(object? inter, bool nullable) {
+    private static System.DateTime? ConvertToSystemDateTime(object? inter, bool nullable) {
 
         if (inter is not System.DateTime date) return nullable ? null : System.DateTime.MinValue;
 
         if (date == System.DateTime.MinValue) return nullable ? null : System.DateTime.MinValue;
 
+        TimePackageUtils.FixDateTimeKind(ref date);
+
         return new System.DateTime(date.Year, date.Month, date.Day, 0, 0, 0, DateTimeKind.Local);
 
     }
 
-    private static object? ConvertToSystemDateTimeOffset(object? inter, bool nullable) {
+    private static DateTimeOffset? ConvertToSystemDateTimeOffset(object? inter, bool nullable) {
 
         if (inter is not System.DateTime date) return nullable ? null : DateTimeOffset.MinValue;
 
         if (date == System.DateTime.MinValue) return nullable ? null : DateTimeOffset.MinValue;
+
+        TimePackageUtils.FixDateTimeKind(ref date);
 
         TimeSpan offset = TimeZoneInfo.Local.GetUtcOffset(date);
 
@@ -87,21 +93,25 @@ public class DateValueConverter : DatePickerValueConverter {
 
     }
 
-    private static object? ConvertToEssentialsDate(object? inter, bool nullable) {
+    private static EssentialsDate? ConvertToEssentialsDate(object? inter, bool nullable) {
 
         if (inter is not System.DateTime date) return nullable ? null : EssentialsDate.MinValue;
 
         if (date == System.DateTime.MinValue && nullable) return null;
 
+        TimePackageUtils.FixDateTimeKind(ref date);
+
         return new EssentialsDate(date);
 
     }
 
-    private static object? ConvertToEssentialsTime(object? inter, bool nullable) {
+    private static EssentialsTime? ConvertToEssentialsTime(object? inter, bool nullable) {
 
         if (inter is not System.DateTime date) return nullable ? null : EssentialsTime.MinValue;
 
         if (date == System.DateTime.MinValue) return nullable ? null : EssentialsTime.MinValue;
+
+        TimePackageUtils.FixDateTimeKind(ref date);
 
         return new EssentialsTime(date, TimeZoneInfo.Local);
 

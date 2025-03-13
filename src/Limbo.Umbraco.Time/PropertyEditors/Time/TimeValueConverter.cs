@@ -54,7 +54,7 @@ public class TimeValueConverter : PropertyValueConverterBase {
 
     }
 
-    private static object? ConvertToTimeOnly(object? inter, bool nullable) {
+    private static TimeOnly? ConvertToTimeOnly(object? inter, bool nullable) {
 
         if (inter is string str && TimeSpan.TryParse(str, out TimeSpan time)) {
             return new TimeOnly(time.Ticks);
@@ -64,7 +64,7 @@ public class TimeValueConverter : PropertyValueConverterBase {
 
     }
 
-    private static object? ConvertToTimeOffset(object? inter, bool nullable, TimeConfiguration? config) {
+    private static TimeOffset? ConvertToTimeOffset(object? inter, bool nullable, TimeConfiguration? config) {
 
         if (inter is string str && TimeSpan.TryParse(str, out TimeSpan time)) {
             return new TimeOffset(time, config);

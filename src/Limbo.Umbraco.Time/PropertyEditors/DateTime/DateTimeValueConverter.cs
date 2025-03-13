@@ -76,31 +76,40 @@ public class DateTimeValueConverter : PropertyValueConverterBase {
         return _timeZoneProvider.TryGetTimeZone(config.TimeZone, out ITimeZone? result) ? result.TimeZoneInfo : TimeZoneInfo.Local;
     }
 
-    private static object? ConvertToDateTime(object? inter, bool nullable) {
+    private static System.DateTime? ConvertToDateTime(object? inter, bool nullable) {
 
         if (inter is not System.DateTime date) return nullable ? null : System.DateTime.MinValue;
 
         if (date == System.DateTime.MinValue) return nullable ? null : System.DateTime.MinValue;
 
+        // Fix the "Kind" if needed
+        TimePackageUtils.FixDateTimeKind(ref date);
+
         return date.ToLocalTime();
 
     }
 
-    private object? ConvertToDateTimeOffset(object? inter, bool nullable, DateTimeConfiguration? config) {
+    private DateTimeOffset? ConvertToDateTimeOffset(object? inter, bool nullable, DateTimeConfiguration? config) {
 
         if (inter is not System.DateTime date) return nullable ? null : DateTimeOffset.MinValue;
 
         if (date == System.DateTime.MinValue) return nullable ? null : DateTimeOffset.MinValue;
 
+        // Fix the "Kind" if needed
+        TimePackageUtils.FixDateTimeKind(ref date);
+
         return ConvertToEssentialsTime(inter, nullable, config)!.DateTimeOffset;
 
     }
 
-    private object? ConvertToEssentialsDate(object? inter, bool nullable, DateTimeConfiguration? config) {
+    private EssentialsDate? ConvertToEssentialsDate(object? inter, bool nullable, DateTimeConfiguration? config) {
 
         if (inter is not System.DateTime date) return nullable ? null : EssentialsDate.MinValue;
 
         if (date == System.DateTime.MinValue) return nullable ? null : EssentialsDate.MinValue;
+
+        // Fix the "Kind" if needed
+        TimePackageUtils.FixDateTimeKind(ref date);
 
         return new EssentialsDate(ConvertToEssentialsTime(inter, nullable, config)!);
 
@@ -111,6 +120,9 @@ public class DateTimeValueConverter : PropertyValueConverterBase {
         if (inter is not System.DateTime date) return nullable ? null : EssentialsTime.MinValue;
 
         if (date == System.DateTime.MinValue) return nullable ? null : EssentialsTime.MinValue;
+
+        // Fix the "Kind" if needed
+        TimePackageUtils.FixDateTimeKind(ref date);
 
         // Find the selected time zone
         TimeZoneInfo timeZone = GetTimeZoneInfo(config);

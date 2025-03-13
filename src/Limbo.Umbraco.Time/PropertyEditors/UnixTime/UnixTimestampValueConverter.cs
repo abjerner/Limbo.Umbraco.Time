@@ -101,17 +101,17 @@ public class UnixTimestampValueConverter : PropertyValueConverterBase {
 
     }
 
-    private static object? ConvertToDateTimeOffset(EssentialsTime? timestamp, bool nullable) {
+    private static DateTimeOffset? ConvertToDateTimeOffset(EssentialsTime? timestamp, bool nullable) {
         if (timestamp is null) return nullable ? null : DateTimeOffset.MinValue;
         return timestamp.DateTimeOffset;
     }
 
-    private static object? ConvertToEssentialsDate(EssentialsTime? timestamp, bool nullable) {
+    private static EssentialsDate? ConvertToEssentialsDate(EssentialsTime? timestamp, bool nullable) {
         if (timestamp is null) return nullable ? null : EssentialsDate.MinValue;
         return new EssentialsDate(timestamp);
     }
 
-    private static object? ConvertToEssentialsTime(EssentialsTime? timestamp, bool nullable) {
+    private static EssentialsTime? ConvertToEssentialsTime(EssentialsTime? timestamp, bool nullable) {
         if (timestamp is null) return nullable ? null : EssentialsTime.MinValue;
         return timestamp;
     }
