@@ -20,17 +20,19 @@ While Umbraco already features a property editor for picking a date (or date and
 
 ## Installation
 
-The Umbraco 13 version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.Time/13.0.1). To install the package, you can use either .NET CLI:
+The Umbraco 17 version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.Time/17.0.0). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.Time --version 13.0.1
+dotnet add package Limbo.Umbraco.Time --version 17.0.0
 ```
 
 or the older NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.Time -Version 13.0.1
+Install-Package Limbo.Umbraco.Time -Version 17.0.0
 ```
+
+The package targets **Umbraco 17** (`net10.0`). For Umbraco 13, see the [`v13/main`](https://github.com/abjerner/Limbo.Umbraco.Time/tree/v13/main) branch. Upgrading from the Umbraco 13 version requires no data migration - property editor aliases and stored values are unchanged. See [documentation/v17-upgrade.md](documentation/v17-upgrade.md) for details.
 
 
 <br /><br />
@@ -45,7 +47,7 @@ Install-Package Limbo.Umbraco.Time -Version 13.0.1
 
 ## Date Picker
 
-The date picker uses Umbraco's own date picker view, but ensures that the view is configured for selecting a date without any time. The property editor should be used in situations where only the date matters, and as such it returns an instance of [EssentialsDate](https://packages.skybrud.dk/skybrud.essentials/reference/time/essentialsdate/) instead of the normal `DateTime`.
+The date picker is a date-only picker (no time component). The property editor should be used in situations where only the date matters, and as such it returns an instance of [EssentialsDate](https://packages.skybrud.dk/skybrud.essentials/reference/time/essentialsdate/) instead of the normal `DateTime`.
 
 The `EssentialsDate` class comes from our [**Limbo.Essentials** package](https://packages.skybrud.dk/skybrud.essentials/reference/time/essentialsdate/), which provides extended functionality for working with dates compared to `DateTime`.
 

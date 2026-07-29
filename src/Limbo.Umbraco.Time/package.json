@@ -1,0 +1,18 @@
+{
+  "name": "limbo-umbraco-time",
+  "private": true,
+  "version": "17.0.0",
+  "type": "module",
+  "description": "Backoffice client for the Limbo Time property editors.",
+  "scripts": {
+    "clean": "node -e \"const fs=require('fs');if(fs.existsSync('wwwroot'))for(const f of fs.readdirSync('wwwroot'))if(f.endsWith('.js')||f.endsWith('.js.map'))fs.rmSync('wwwroot/'+f)\"",
+    "prebuild": "npm run clean",
+    "build": "tsc --noEmit && vite build",
+    "watch": "vite build --watch"
+  },
+  "devDependencies": {
+    "@umbraco-cms/backoffice": "^17.0.0",
+    "typescript": "^5.6.0",
+    "vite": "^6.0.0"
+  }
+}

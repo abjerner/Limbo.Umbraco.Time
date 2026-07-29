@@ -1,8 +1,9 @@
-﻿using Umbraco.Cms.Core.IO;
+using Umbraco.Cms.Core.IO;
 using Umbraco.Cms.Core.PropertyEditors;
-using Umbraco.Cms.Core.Services;
 
 namespace Limbo.Umbraco.Time.PropertyEditors.UnixTime;
+
+// [CHANGE: upgrade to Umbraco 17] Related: DateConfigurationEditor.cs, DateTimeConfigurationEditor.cs, TimeConfigurationEditor.cs, OpeningHoursConfigurationEditor.cs
 
 /// <summary>
 /// Configuration editor for <see cref="UnixTimestampPropertyEditor"/>.
@@ -13,7 +14,6 @@ public class UnixTimestampConfigurationEditor : ConfigurationEditor<UnixTimestam
     /// Initializes a new instance of the <see cref="UnixTimestampConfigurationEditor"/> class.
     /// </summary>
     /// <param name="ioHelper">An instance of <see cref="IIOHelper"/>.</param>
-    /// <param name="editorConfigurationParser">An instance of <see cref="IEditorConfigurationParser"/>.</param>
-    public UnixTimestampConfigurationEditor(IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(ioHelper, editorConfigurationParser) { }
+    public UnixTimestampConfigurationEditor(IIOHelper ioHelper) : base(ioHelper) { }
 
 }

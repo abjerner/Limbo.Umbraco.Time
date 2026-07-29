@@ -1,5 +1,4 @@
-﻿using Limbo.Umbraco.Time.Manifests;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Limbo.Umbraco.Time.Providers;
 using Umbraco.Cms.Core.Composing;
 using Umbraco.Cms.Core.DependencyInjection;
@@ -15,8 +14,8 @@ public class TimeComposer : IComposer {
         // Register the default time zone provider with the DI container
         builder.Services.AddSingleton<ITimeZoneProvider, DefaultTimeZoneProvider>();
 
-        // Register the package manifest
-        builder.ManifestFilters().Append<TimeManifestFilter>();
+        // NOTE: The Umbraco 13 "IManifestFilter" registration is gone. The backoffice extensions are now declared
+        // client side, in "wwwroot/umbraco-package.json" (served from "/App_Plugins/Limbo.Umbraco.Time").
 
     }
 

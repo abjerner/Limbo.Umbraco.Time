@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using Limbo.Umbraco.Time.PropertyEditors.OpeningHours;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Essentials.Time;
 
 namespace Limbo.Umbraco.Time.Models.OpeningHours;

@@ -1,3 +1,11 @@
 src/.vs/
 src/Limbo.Umbraco.Time/bin/
 src/Limbo.Umbraco.Time/obj/
+
+# Backoffice client (TypeScript/Lit) build artifacts
+src/Limbo.Umbraco.Time/node_modules/
+src/Limbo.Umbraco.Time/wwwroot/*.js
+src/Limbo.Umbraco.Time/wwwroot/*.js.map
+
+# Local Umbraco 17 test site
+test/

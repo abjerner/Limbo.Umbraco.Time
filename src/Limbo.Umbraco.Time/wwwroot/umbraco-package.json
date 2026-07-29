@@ -1,0 +1,14 @@
+{
+  "$schema": "../node_modules/@umbraco-cms/backoffice/umbraco-package-schema.json",
+  "name": "Limbo Time",
+  "version": "17.0.0",
+  "allowPackageTelemetry": true,
+  "extensions": [
+    {
+      "type": "bundle",
+      "alias": "Limbo.Umbraco.Time.Bundle",
+      "name": "Limbo Time Bundle",
+      "js": "/App_Plugins/Limbo.Umbraco.Time/limbo-time.js"
+    }
+  ]
+}

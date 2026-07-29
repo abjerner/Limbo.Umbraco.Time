@@ -1,13 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <StaticWebAssetBasePath>App_Plugins/$(AssemblyName)</StaticWebAssetBasePath>
   </PropertyGroup>
 
   <PropertyGroup>
-    <VersionPrefix>13.0.2</VersionPrefix>
+    <VersionPrefix>17.0.0</VersionPrefix>
+    <VersionSuffix>alpha000</VersionSuffix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Company>Limbo</Company>
     <Authors>Anders Bjerner</Authors>
@@ -23,40 +24,49 @@
     <Title>Limbo Time</Title>
     <PackageTags>Skybrud, Limbo, Umbraco, Date, Time, Umbraco-Marketplace</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://packages.limbo.works/limbo.umbraco.time/v13/</PackageProjectUrl>
+    <PackageProjectUrl>https://packages.limbo.works/limbo.umbraco.time/v17/</PackageProjectUrl>
     <PackageIcon>Limbo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/abjerner/Limbo.Umbraco.Time/tree/v13/main</RepositoryUrl>
+    <RepositoryUrl>https://github.com/abjerner/Limbo.Umbraco.Time/tree/v17/main</RepositoryUrl>
   </PropertyGroup>
 
   <!-- Include additional metadata in the assembly -->
   <ItemGroup>
     <AssemblyMetadata Include="PackageProjectUrl" Value="https://packages.limbo.works/limbo.umbraco.time/" />
-    <AssemblyMetadata Include="DocumentationUrl" Value="https://packages.limbo.works/limbo.umbraco.time/docs/v13/" />
+    <AssemblyMetadata Include="DocumentationUrl" Value="https://packages.limbo.works/limbo.umbraco.time/docs/v17/" />
     <AssemblyMetadata Include="NuGetUrl" Value="https://www.nuget.org/packages/Limbo.Umbraco.Time" />
     <AssemblyMetadata Include="UmbracoMarketplaceUrl" Value="https://marketplace.umbraco.com/package/limbo.umbraco.time" />
   </ItemGroup>
 
   <!-- Include NuGet dependencies -->
   <ItemGroup>
-    <PackageReference Include="Skybrud.Essentials" Version="1.1.58" />
-    <PackageReference Include="Umbraco.Cms.Core" Version="[13.0.0,13.999)" />
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="[13.0.0,13.999)" />
-    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="[13.0.0,13.999)" />
+    <PackageReference Include="Skybrud.Essentials" Version="1.1.68" />
+    <!-- [CHANGE: upgrade to Umbraco 17] The upper bound must be the next major. NuGet compares each
+         version part numerically, so "[17.0.0,17.9.9)" would exclude Umbraco 17.10 and up. -->
+    <PackageReference Include="Umbraco.Cms.Core" Version="[17.0.0,18.0.0)" />
+    <PackageReference Include="Umbraco.Cms.Api.Management" Version="[17.0.0,18.0.0)" />
   </ItemGroup>
 
-  <!-- Backoffice assets -->
+  <!-- The client app (TypeScript/Lit) is built by Vite into wwwroot. These files are
+       generated and should not be tracked as compile/content items by MSBuild. -->
   <ItemGroup>
-    <Content Remove="compilerconfig.json" />
-    <None Include="compilerconfig.json" />
-    <Content Remove="wwwroot\Styles\Default.less" />
-    <None Include="wwwroot\Scripts\Directives\DatePicker.js" />
-    <None Include="wwwroot\Scripts\Directives\Holidays.js" />
-    <None Include="wwwroot\Scripts\Directives\Weekdays.js" />
-    <None Include="wwwroot\Styles\Default.less" />
-    <Content Remove="wwwroot\Scripts\dummy.js" />
-    <None Include="wwwroot\Scripts\dummy.js" />
+    <Content Remove="package.json" />
+    <Content Remove="package-lock.json" />
+    <Content Remove="tsconfig.json" />
+    <Content Remove="vite.config.ts" />
+    <None Include="package.json" />
+    <None Include="tsconfig.json" />
+    <None Include="vite.config.ts" />
   </ItemGroup>
+
+  <!-- Build the client app (npm) before the .NET build so the compiled assets in
+       wwwroot are always up to date and included when packing. -->
+  <Target Name="BuildClient" BeforeTargets="BeforeBuild" Condition="'$(SkipClientBuild)' != 'true' AND !Exists('node_modules')">
+    <Exec Command="npm ci" WorkingDirectory="$(MSBuildProjectDirectory)" />
+  </Target>
+  <Target Name="BuildClientAssets" BeforeTargets="BeforeBuild" Condition="'$(SkipClientBuild)' != 'true'">
+    <Exec Command="npm run build" WorkingDirectory="$(MSBuildProjectDirectory)" />
+  </Target>
 
   <!-- Include package icon for NuGet -->
   <ItemGroup>

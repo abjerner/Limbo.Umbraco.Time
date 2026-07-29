@@ -1,6 +1,10 @@
-﻿using Umbraco.Cms.Core.PropertyEditors;
+using Umbraco.Cms.Core.PropertyEditors;
 
 namespace Limbo.Umbraco.Time.PropertyEditors.DateTime;
+
+// [CHANGE: upgrade to Umbraco 17] Related: DateConfiguration.cs, TimeConfiguration.cs, UnixTimestampConfiguration.cs, OpeningHoursConfiguration.cs, src/index.ts
+// [ConfigurationField] now only carries the storage key - labels, descriptions and the field UIs
+// (including the custom time zone picker) are declared in src/index.ts.
 
 /// <summary>
 /// Configuration for <see cref="DateTimePropertyEditor"/>.
@@ -10,25 +14,25 @@ public class DateTimeConfiguration {
     /// <summary>
     /// Gets or sets the unique identifer of the time zone to be used.
     /// </summary>
-    [ConfigurationField("timeZone", "Time zone", "/App_Plugins/Limbo.Umbraco.Time/Views/Editors/TimeZone.html", Description = "Select the time zone of the returned timestamp. This does not affect the value saved in Umbraco.")]
+    [ConfigurationField("timeZone")]
     public string? TimeZone { get; set; }
 
     /// <summary>
     /// Gets or sets whether the field is readonly.
     /// </summary>
-    [ConfigurationField("readonly", "Readonly", "boolean", Description = "Specify whether the editor should be readonly.")]
+    [ConfigurationField("readonly")]
     public bool IsReadOnly { get; set; }
 
     /// <summary>
     /// Gets or sets whether the property value type should be a nullable type.
     /// </summary>
-    [ConfigurationField("nullable", "Nullable", "boolean", Description = "Specify whether the property value type should be a nullable type.")]
+    [ConfigurationField("nullable")]
     public bool IsNullable { get; set; } = true;
 
     /// <summary>
     /// Gets or sets .NET value type returned by properties using this data type.
     /// </summary>
-    [ConfigurationField("valueType", "Value type", "/App_Plugins/Limbo.Umbraco.Time/Views/Editors/DateTimeValueType.html", Description = "Select the .NET value type returned by properties using this data type.")]
+    [ConfigurationField("valueType")]
     public string? ValueType { get; set; }
 
 }

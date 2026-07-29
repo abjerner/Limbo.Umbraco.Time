@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Limbo.Umbraco.Time.Models.TimeZones;
 using Limbo.Umbraco.Time.Providers;
 using Skybrud.Essentials.Time;
@@ -9,6 +9,11 @@ using Umbraco.Extensions;
 #pragma warning disable 1591
 
 namespace Limbo.Umbraco.Time.PropertyEditors.DateTime;
+
+// [CHANGE: upgrade to Umbraco 17] Related: DateValueConverter.cs, DateTimeValueConverter.cs, TimeValueConverter.cs, UnixTimestampValueConverter.cs, OpeningHoursValueConverter.cs
+// IPublishedDataType.Configuration was renamed to ConfigurationObject in v14+; ConfigurationAs<T>()
+// is the typed accessor. Everything else (value types, time zone handling, the DateTimeKind fix) is
+// unchanged, so existing content keeps converting to the exact same values.
 
 public class DateTimeValueConverter : PropertyValueConverterBase {
 
@@ -39,7 +44,7 @@ public class DateTimeValueConverter : PropertyValueConverterBase {
     public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
 
         // Get the configuration
-        DateTimeConfiguration? config = propertyType.DataType.Configuration as DateTimeConfiguration;
+        DateTimeConfiguration? config = propertyType.DataType.ConfigurationAs<DateTimeConfiguration>();
 
         // Is the data type nullable?
         bool nullable = config?.IsNullable ?? true;
@@ -56,7 +61,7 @@ public class DateTimeValueConverter : PropertyValueConverterBase {
     public override Type GetPropertyValueType(IPublishedPropertyType propertyType) {
 
         // Get the configuration
-        DateTimeConfiguration? config = propertyType.DataType.Configuration as DateTimeConfiguration;
+        DateTimeConfiguration? config = propertyType.DataType.ConfigurationAs<DateTimeConfiguration>();
 
         // Is the data type nullable?
         bool nullable = config?.IsNullable ?? true;
