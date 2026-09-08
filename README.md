@@ -1,6 +1,6 @@
 # Limbo Time
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/abjerner/Limbo.Umbraco.Time/blob/v13/main/LICENSE.md)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/abjerner/Limbo.Umbraco.Time/blob/v17/main/LICENSE.md)
 [![NuGet](https://img.shields.io/nuget/vpre/Limbo.Umbraco.Time.svg)](https://www.nuget.org/packages/Limbo.Umbraco.Time)
 [![NuGet](https://img.shields.io/nuget/dt/Limbo.Umbraco.Time.svg)](https://www.nuget.org/packages/Limbo.Umbraco.Time)
 [![Umbraco Marketplace](https://img.shields.io/badge/umbraco-marketplace-%233544B1)](https://marketplace.umbraco.com/package/limbo.umbraco.time)
@@ -20,16 +20,16 @@ While Umbraco already features a property editor for picking a date (or date and
 
 ## Installation
 
-The Umbraco 13 version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.Time/13.0.1). To install the package, you can use either .NET CLI:
+The Umbraco 17 version of this package is only available via [NuGet](https://www.nuget.org/packages/Limbo.Umbraco.Time/17.0.0-alpha000). To install the package, you can use either .NET CLI:
 
 ```
-dotnet add package Limbo.Umbraco.Time --version 13.0.1
+dotnet add package Limbo.Umbraco.Time --version 17.0.0-alpha000
 ```
 
 or the older NuGet Package Manager:
 
 ```
-Install-Package Limbo.Umbraco.Time -Version 13.0.1
+Install-Package Limbo.Umbraco.Time -Version 17.0.0-alpha000
 ```
 
 

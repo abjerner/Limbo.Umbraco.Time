@@ -124,7 +124,10 @@ public class OpeningHoursModel : OpeningHoursJsonObject {
         }
 
         // Parse holidays
-        Holidays = json.GetArrayItems("holidays", OpeningHoursHolidayItem.Parse);
+        Holidays = json
+            .GetArrayItems("holidays", OpeningHoursHolidayItem.Parse)
+            .OrderBy(x => x.Date)
+            .ToList();
 
         // Create a dictionary with the holidays - for O(1) lookups
         _holidays = Holidays
@@ -240,12 +243,12 @@ public class OpeningHoursModel : OpeningHoursJsonObject {
     }
 
     /// <summary>
-    /// Gets an array of the next <code>count</code> upcoming days. If <strong>Require Holiday Dates</strong> has
+    /// Returns a list of the next <code>count</code> upcoming days. If <strong>Require Holiday Dates</strong> has
     /// been checked in the pre-value editor, holidays will be incorporated into the result.
     /// </summary>
     /// <param name="count">The amount of days to be returned (including the current day).</param>
-    /// <returns>Returns an array of <see cref="OpeningHoursDay"/> representing the opening hours of the upcoming days.</returns>
-    public OpeningHoursDay[] GetUpcomingDays(int count) {
+    /// <returns>Returns a list of <see cref="OpeningHoursDay"/> representing the opening hours of the upcoming days.</returns>
+    public IReadOnlyList<OpeningHoursDay> GetUpcomingDays(int count) {
 
         // Array containing the days
         OpeningHoursDay[] upcomingDays = new OpeningHoursDay[count];
@@ -260,13 +263,13 @@ public class OpeningHoursModel : OpeningHoursJsonObject {
     }
 
     /// <summary>
-    /// Gets an array of the next <paramref name="count"/> upcoming days. If <strong>Require Holiday Dates</strong>
+    /// Returns a list of the next <paramref name="count"/> upcoming days. If <strong>Require Holiday Dates</strong>
     /// has been checked in the pre-value editor, holidays will be incorporated into the result.
     /// </summary>
     /// <param name="count">The amount of days to be returned (including the current day).</param>
     /// <param name="timeZone">The <see cref="TimeZoneInfo"/> that should be used.</param>
-    /// <returns>An array of <see cref="OpeningHoursDay"/> representing the opening hours of the upcoming days.</returns>
-    public OpeningHoursDayOffset[] GetUpcomingDays(int count, TimeZoneInfo timeZone) {
+    /// <returns>A list of <see cref="OpeningHoursDayOffset"/> representing the opening hours of the upcoming days.</returns>
+    public IReadOnlyList<OpeningHoursDayOffset> GetUpcomingDays(int count, TimeZoneInfo timeZone) {
 
         // Array containing the days
         OpeningHoursDayOffset[] upcomingDays = new OpeningHoursDayOffset[count];

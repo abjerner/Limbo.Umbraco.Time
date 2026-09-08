@@ -4,7 +4,7 @@ using System.Globalization;
 using Limbo.Umbraco.Time.PropertyEditors.OpeningHours;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Essentials.Strings;
 
 namespace Limbo.Umbraco.Time.Models.OpeningHours;
@@ -76,7 +76,7 @@ public class OpeningHoursTimeSlot : OpeningHoursJsonObject {
     /// Gets an instance of <see cref="OpeningHoursTimeSlot"/> from the specified <see cref="JObject"/>.
     /// </summary>
     /// <param name="obj">The instance of <see cref="JObject"/> to parse.</param>
-    /// <param name="configuration">The opening hours configuration.</param>
+    /// <param name="configuration">The configuration.</param>
     [return: NotNullIfNotNull("obj")]
     public static OpeningHoursTimeSlot? Parse(JObject? obj, OpeningHoursConfiguration? configuration) {
         return obj == null ? null : new OpeningHoursTimeSlot(obj, configuration);

@@ -29,14 +29,18 @@ public class DefaultTimeZoneProvider : ITimeZoneProvider {
     /// </summary>
     /// <param name="id">The unique identifier of the time zone.</param>
     /// <param name="result">When this method returns, contains the time zone with the specified <paramref name="id"/>, if the time zone is found; otherwise <c>null</c>. This parameter is passed uninitialized.</param>
-    /// <returns><c>true</c> if provider contains a time zone with the specified <paramref name="id"/>; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if provider contains a time zone with the specified <paramref name="id"/>; otherwise <see langword="false"/>.</returns>
     public virtual bool TryGetTimeZone(string id, [NotNullWhen(true)] out ITimeZone? result) {
         if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id));
         result = GetTimeZones().FirstOrDefault(x => x.Id == id);
         return result != null;
     }
 
-    private IEnumerable<ITimeZone> GetTimeZonesInternal() {
+    #endregion
+
+    #region Static methods
+
+    private static IEnumerable<ITimeZone> GetTimeZonesInternal() {
 
         yield return new TimeZone("local", $"Server time zone: {TimeZoneInfo.Local.DisplayName}", TimeZoneInfo.Local);
 

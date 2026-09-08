@@ -20,7 +20,7 @@ public interface ITimeZoneProvider {
     /// </summary>
     /// <param name="id">The unique identifier of the time zone.</param>
     /// <param name="result">When this method returns, contains the time zone with the specified <paramref name="id"/>, if the time zone is found; otherwise <c>null</c>. This parameter is passed uninitialized.</param>
-    /// <returns><c>true</c> if provider contains a time zone with the specified <paramref name="id"/>; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if provider contains a time zone with the specified <paramref name="id"/>; otherwise <see langword="false"/>.</returns>
     bool TryGetTimeZone(string id, [NotNullWhen(true)] out ITimeZone? result);
 
 }

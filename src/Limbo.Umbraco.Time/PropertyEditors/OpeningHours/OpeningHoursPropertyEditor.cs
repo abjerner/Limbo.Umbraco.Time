@@ -1,6 +1,6 @@
-﻿using Umbraco.Cms.Core.IO;
+using Limbo.Umbraco.Time.Constants;
+using Umbraco.Cms.Core.IO;
 using Umbraco.Cms.Core.PropertyEditors;
-using Umbraco.Cms.Core.Services;
 
 #pragma warning disable CS1591
 
@@ -9,23 +9,18 @@ namespace Limbo.Umbraco.Time.PropertyEditors.OpeningHours;
 /// <summary>
 /// Represents a property editor for specifying opening hours.
 /// </summary>
-[DataEditor(EditorAlias, EditorType.PropertyValue, EditorName, EditorView, ValueType = ValueTypes.Json, Group = EditorGroup, Icon = EditorIcon)]
+[DataEditor(EditorAlias, ValueType = EditorValueType)]
 public class OpeningHoursPropertyEditor : DataEditor {
 
     private readonly IIOHelper _ioHelper;
-    private readonly IEditorConfigurationParser _editorConfigurationParser;
 
     #region Constants
 
-    public const string EditorAlias = "Limbo.Umbraco.Time.OpeningHours";
+    public const string EditorAlias = PropertyEditorAliases.OpeningHours;
 
-    public const string EditorName = "Limbo Opening Hours";
+    public const string EditorUiAlias = TimePropertyEditorUiAliases.OpeningHours;
 
-    public const string EditorGroup = "Limbo";
-
-    public const string EditorIcon = "icon-calendar color-limbo";
-
-    public const string EditorView = "/App_Plugins/Limbo.Umbraco.Time/Views/Editors/OpeningHours.html";
+    public const string EditorValueType = ValueTypes.Json;
 
     #endregion
 
@@ -34,10 +29,8 @@ public class OpeningHoursPropertyEditor : DataEditor {
     /// <summary>
     /// Initializes a new instance of the <see cref="OpeningHoursPropertyEditor"/> class.
     /// </summary>
-
-    public OpeningHoursPropertyEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper ioHelper, IEditorConfigurationParser editorConfigurationParser) : base(dataValueEditorFactory) {
+    public OpeningHoursPropertyEditor(IDataValueEditorFactory dataValueEditorFactory, IIOHelper ioHelper) : base(dataValueEditorFactory) {
         _ioHelper = ioHelper;
-        _editorConfigurationParser = editorConfigurationParser;
     }
 
     #endregion
@@ -45,7 +38,7 @@ public class OpeningHoursPropertyEditor : DataEditor {
     #region Member methods
 
     /// <inheritdoc />
-    protected override IConfigurationEditor CreateConfigurationEditor() => new OpeningHoursConfigurationEditor(_ioHelper, _editorConfigurationParser);
+    protected override IConfigurationEditor CreateConfigurationEditor() => new OpeningHoursConfigurationEditor(_ioHelper);
 
     #endregion
 

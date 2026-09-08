@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Limbo.Umbraco.Time.Models.OpeningHours;
 
@@ -103,7 +104,7 @@ public class OpeningHoursOffsetModel {
     /// <param name="count">The amount of days to be returned (including the current day).</param>
     /// <returns>An array of <see cref="OpeningHoursDayOffset"/> representing the opening hours of the upcoming
     /// days.</returns>
-    public OpeningHoursDayOffset[] GetUpcomingDays(int count) {
+    public IReadOnlyList<OpeningHoursDayOffset> GetUpcomingDays(int count) {
         return Model.GetUpcomingDays(count, TimeZone);
     }
 

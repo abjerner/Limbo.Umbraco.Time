@@ -31,7 +31,7 @@ public class TimeZone : ITimeZone {
     /// <summary>
     /// Initializes a new time zone based on the specified <paramref name="id"/>, <paramref name="name"/> and <paramref name="timeZoneInfo"/>.
     /// </summary>
-    /// <param name="id">The unique identifer of the time zone</param>
+    /// <param name="id">The unique identifier of the time zone</param>
     /// <param name="name">The friendly name of the time zone.</param>
     /// <param name="timeZoneInfo">The <see cref="System.TimeZoneInfo"/> representing the time zone.</param>
     public TimeZone(string id, string name, TimeZoneInfo timeZoneInfo) {

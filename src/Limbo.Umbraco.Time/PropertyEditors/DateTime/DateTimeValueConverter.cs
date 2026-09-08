@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Limbo.Umbraco.Time.Models.TimeZones;
 using Limbo.Umbraco.Time.Providers;
 using Skybrud.Essentials.Time;
@@ -39,7 +39,7 @@ public class DateTimeValueConverter : PropertyValueConverterBase {
     public override object? ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
 
         // Get the configuration
-        DateTimeConfiguration? config = propertyType.DataType.Configuration as DateTimeConfiguration;
+        DateTimeConfiguration? config = propertyType.DataType.ConfigurationAs<DateTimeConfiguration>();
 
         // Is the data type nullable?
         bool nullable = config?.IsNullable ?? true;
@@ -56,7 +56,7 @@ public class DateTimeValueConverter : PropertyValueConverterBase {
     public override Type GetPropertyValueType(IPublishedPropertyType propertyType) {
 
         // Get the configuration
-        DateTimeConfiguration? config = propertyType.DataType.Configuration as DateTimeConfiguration;
+        DateTimeConfiguration? config = propertyType.DataType.ConfigurationAs<DateTimeConfiguration>();
 
         // Is the data type nullable?
         bool nullable = config?.IsNullable ?? true;

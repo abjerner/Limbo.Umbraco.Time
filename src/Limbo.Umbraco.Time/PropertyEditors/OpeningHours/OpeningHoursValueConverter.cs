@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Limbo.Umbraco.Time.Models.OpeningHours;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft;
@@ -25,7 +25,7 @@ public class OpeningHoursValueConverter : PropertyValueConverterBase {
 
     /// <inheritdoc />
     public override object ConvertIntermediateToObject(IPublishedElement owner, IPublishedPropertyType propertyType, PropertyCacheLevel referenceCacheLevel, object? inter, bool preview) {
-        return OpeningHoursModel.Create(inter as JObject, propertyType.DataType.Configuration as OpeningHoursConfiguration);
+        return OpeningHoursModel.Create(inter as JObject, propertyType.DataType.ConfigurationAs<OpeningHoursConfiguration>());
     }
 
     /// <inheritdoc />
