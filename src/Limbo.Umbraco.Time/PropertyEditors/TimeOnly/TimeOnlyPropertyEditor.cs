@@ -14,9 +14,15 @@ public class TimeOnlyPropertyEditor : DataEditor {
 
     #region Constants
 
-    public const string EditorAlias = PropertyEditorAliases.TimeOnly;
+    public const string EditorAlias = TimePropertyEditorSchemaAliases.TimeOnly;
 
     public const string EditorUiAlias = TimePropertyEditorUiAliases.TimeOnly;
+
+    public const string EditorName = "Limbo Time Only";
+
+    public const string EditorIcon = "icon-time";
+
+    public const string EditorGroup = TimePackage.Name;
 
     public const string EditorValueType = ValueTypes.String;
 

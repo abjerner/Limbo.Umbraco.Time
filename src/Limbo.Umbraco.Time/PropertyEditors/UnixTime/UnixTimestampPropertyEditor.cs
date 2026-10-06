@@ -16,9 +16,15 @@ public class UnixTimestampPropertyEditor : DataEditor {
 
     #region Constants
 
-    public const string EditorAlias = PropertyEditorAliases.UnixTimestamp;
+    public const string EditorAlias = TimePropertyEditorSchemaAliases.UnixTimestamp;
 
     public const string EditorUiAlias = TimePropertyEditorUiAliases.UnixTimestamp;
+
+    public const string EditorName = "Limbo Unix Timestamp";
+
+    public const string EditorIcon = "icon-time";
+
+    public const string EditorGroup = TimePackage.Name;
 
     /// <remarks>
     /// Value type must be "STRING" to support zero as a value

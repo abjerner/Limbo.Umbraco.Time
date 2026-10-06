@@ -40,7 +40,7 @@ public class TimePackageManifestReader : IPackageManifestReader {
             Name = $"{Name}: Value Type Property Editor UI",
             Element = $"/App_Plugins/{Alias}/Elements/ValueList.js",
             Meta = new PropertyEditorUiMeta {
-                Label = "Limbo Value Type",
+                Label = "Limbo Time Value Type",
                 Icon = "icon-list",
                 Group = TimePackage.Name
             }
@@ -62,7 +62,7 @@ public class TimePackageManifestReader : IPackageManifestReader {
             Name = $"{Name}: Allowed Days Property Editor UI",
             Element = $"/App_Plugins/{Alias}/Elements/AllowedDays.js",
             Meta = new PropertyEditorUiMeta {
-                Label = "Limbo Allowed Days",
+                Label = "Limbo Time Allowed Days",
                 Icon = "icon-list",
                 Group = TimePackage.Name
             }
@@ -158,9 +158,9 @@ public class TimePackageManifestReader : IPackageManifestReader {
             Name = $"{Name}: Date Only Property Editor UI",
             Element = $"/App_Plugins/{Alias}/Elements/DateOnly.js",
             Meta = new PropertyEditorUiMeta {
-                Label = "Limbo Date Only",
-                Icon = "icon-calendar-alt",
-                Group = TimePackage.Name,
+                Label = DateOnlyPropertyEditor.EditorName,
+                Icon = DateOnlyPropertyEditor.EditorIcon,
+                Group = DateOnlyPropertyEditor.EditorGroup,
                 Keywords = ["date", "calendar", "birthday", "deadline", "day", "anniversary", "expiry", "start", "end", "release"],
                 PropertyEditorSchemaAlias = DateOnlyPropertyEditor.EditorAlias
             }
@@ -201,9 +201,9 @@ public class TimePackageManifestReader : IPackageManifestReader {
             Name = $"{Name}: Date Time Property Editor UI",
             Element = $"/App_Plugins/{Alias}/Elements/DateTime.js",
             Meta = new PropertyEditorUiMeta {
-                Label = "Limbo Date & Time",
-                Icon = "icon-time",
-                Group = TimePackage.Name,
+                Label = DateTimePropertyEditor.EditorName,
+                Icon = DateTimePropertyEditor.EditorIcon,
+                Group = DateTimePropertyEditor.EditorGroup,
                 Keywords = ["date", "time", "limbo"],
                 PropertyEditorSchemaAlias = DateTimePropertyEditor.EditorAlias
             }
@@ -231,9 +231,9 @@ public class TimePackageManifestReader : IPackageManifestReader {
             Name = $"{Name}: Day of Week Property Editor UI",
             Element = $"/App_Plugins/{Alias}/Elements/DayOfWeek.js",
             Meta = new PropertyEditorUiMeta {
-                Label = "Limbo Day of Week",
-                Icon = "icon-calendar",
-                Group = TimePackage.Name,
+                Label = DayOfWeekPropertyEditor.EditorName,
+                Icon = DayOfWeekPropertyEditor.EditorIcon,
+                Group = DayOfWeekPropertyEditor.EditorGroup,
                 PropertyEditorSchemaAlias = DayOfWeekPropertyEditor.EditorAlias
             }
         };
@@ -280,9 +280,9 @@ public class TimePackageManifestReader : IPackageManifestReader {
             Name = $"{Name}: Time Only Property Editor UI",
             Element = $"/App_Plugins/{Alias}/Elements/TimeOnly.js",
             Meta = new PropertyEditorUiMeta {
-                Label = "Limbo Time Only",
-                Icon = "icon-time",
-                Group = TimePackage.Name,
+                Label = TimeOnlyPropertyEditor.EditorName,
+                Icon = TimeOnlyPropertyEditor.EditorIcon,
+                Group = TimeOnlyPropertyEditor.EditorGroup,
                 Keywords = ["time", "clock", "hour", "schedule", "duration", "opening", "closing", "start", "end", "minute"],
                 PropertyEditorSchemaAlias = TimeOnlyPropertyEditor.EditorAlias
             }
@@ -329,9 +329,9 @@ public class TimePackageManifestReader : IPackageManifestReader {
             Name = $"{Name}: Unix Timestamp Property Editor UI",
             Element = $"/App_Plugins/{Alias}/Elements/UnixTimestamp.js",
             Meta = new PropertyEditorUiMeta {
-                Label = "Limbo Unix Timestamp",
-                Icon = "icon-time",
-                Group = TimePackage.Name,
+                Label = UnixTimestampPropertyEditor.EditorName,
+                Icon = UnixTimestampPropertyEditor.EditorIcon,
+                Group = UnixTimestampPropertyEditor.EditorGroup,
                 Keywords = ["date", "time", "limbo", "unix", "timestamp"],
                 PropertyEditorSchemaAlias = UnixTimestampPropertyEditor.EditorAlias
             }
@@ -416,9 +416,9 @@ public class TimePackageManifestReader : IPackageManifestReader {
             Name = $"{Name}: Opening Hours Property Editor UI",
             Element = $"/App_Plugins/{Alias}/Elements/OpeningHours.js",
             Meta = new PropertyEditorUiMeta {
-                Label = "Limbo Opening Hours",
-                Icon = "icon-time",
-                Group = TimePackage.Name,
+                Label = OpeningHoursPropertyEditor.EditorName,
+                Icon = OpeningHoursPropertyEditor.EditorIcon,
+                Group = OpeningHoursPropertyEditor.EditorGroup,
                 Keywords = ["time", "clock", "hour", "schedule", "duration", "opening", "closing", "start", "end", "minute"],
                 PropertyEditorSchemaAlias = OpeningHoursPropertyEditor.EditorAlias
             }

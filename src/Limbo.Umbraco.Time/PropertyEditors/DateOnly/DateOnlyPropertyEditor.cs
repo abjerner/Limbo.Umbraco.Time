@@ -11,9 +11,15 @@ public class DateOnlyPropertyEditor : DataEditor {
 
     #region Constants
 
-    public const string EditorAlias = PropertyEditorAliases.DateOnly;
+    public const string EditorAlias = TimePropertyEditorSchemaAliases.DateOnly;
 
     public const string EditorUiAlias = TimePropertyEditorUiAliases.DateOnly;
+
+    public const string EditorName = "Limbo Date Only";
+
+    public const string EditorIcon = "icon-calendar-alt";
+
+    public const string EditorGroup = TimePackage.Name;
 
     public const string EditorValueType = ValueTypes.String;
 

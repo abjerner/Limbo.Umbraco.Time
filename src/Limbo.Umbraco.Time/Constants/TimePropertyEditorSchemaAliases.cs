@@ -3,7 +3,7 @@
 /// <summary>
 /// Static class with constants for aliases of property editors in this package.
 /// </summary>
-public static class PropertyEditorAliases {
+public static class TimePropertyEditorSchemaAliases {
 
     public const string DateOnly = "Limbo.Umbraco.Time.DateOnly";
 

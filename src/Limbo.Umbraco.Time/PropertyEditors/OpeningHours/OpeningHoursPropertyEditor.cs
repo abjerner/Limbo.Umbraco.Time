@@ -16,9 +16,15 @@ public class OpeningHoursPropertyEditor : DataEditor {
 
     #region Constants
 
-    public const string EditorAlias = PropertyEditorAliases.OpeningHours;
+    public const string EditorAlias = TimePropertyEditorSchemaAliases.OpeningHours;
 
     public const string EditorUiAlias = TimePropertyEditorUiAliases.OpeningHours;
+
+    public const string EditorName = "Limbo Opening Hours";
+
+    public const string EditorIcon = "icon-time";
+
+    public const string EditorGroup = TimePackage.Name;
 
     public const string EditorValueType = ValueTypes.Json;
 

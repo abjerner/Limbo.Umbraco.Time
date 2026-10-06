@@ -9,9 +9,15 @@ public class DayOfWeekPropertyEditor : DataEditor {
 
     private readonly IIOHelper _ioHelper;
 
-    public const string EditorAlias = PropertyEditorAliases.DayOfWeek;
+    public const string EditorAlias = TimePropertyEditorSchemaAliases.DayOfWeek;
 
     public const string EditorUiAlias = TimePropertyEditorUiAliases.DayOfWeek;
+
+    public const string EditorName = "Limbo Day of Week";
+
+    public const string EditorIcon = "icon-calendar";
+
+    public const string EditorGroup = TimePackage.Name;
 
     public const string EditorValueType = ValueTypes.String;
 
