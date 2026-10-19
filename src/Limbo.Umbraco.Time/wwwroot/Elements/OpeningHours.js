@@ -61,6 +61,10 @@ export class LimboOpeningHoursElement extends UmbFormControlMixin(UmbLitElement,
         this.hideLabel = parseBoolean(config?.getValueByAlias("hideLabel"));
     }
 
+    get #debug() {
+        return window.LIMBO_DEBUG_MODE === true;
+    }
+
     constructor() {
         super();
         this.readonly = false;
@@ -302,8 +306,24 @@ export class LimboOpeningHoursElement extends UmbFormControlMixin(UmbLitElement,
         return html`
             ${this.hideWeekdays ? nothing : this.#renderWeekdays()}
             ${this.hideHolidays ? nothing : this.#renderHolidays()}
-            <pre>${JSON.stringify(this.value, null, 2)}</pre>
+            ${this.#debug ? this.#renderJson() : nothing}
         `;
+    }
+
+    #renderJson() {
+        return html`
+            <div class="debug">
+                <h4>Value</h4>
+                <pre>${this.#renderValue(this.value)}</pre>
+            </div>
+        `;
+    }
+
+    #renderValue(value) {
+        if (value === undefined) return html`<em>Undefined</em>`;
+        if (value === null) return html`<em>Null</em>`;
+        if (value === "") return html`<em>Empty string</em>`;
+        return html`${JSON.stringify(this.value, null, 2)}`;
     }
 
     static styles = css`
@@ -362,6 +382,27 @@ export class LimboOpeningHoursElement extends UmbFormControlMixin(UmbLitElement,
         .add-holiday {
             margin-top: 10px;
             width: 100%;
+        }
+
+        .debug {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            h4 {
+                margin: 0;
+            }
+            em {
+                color: var(--uui-palette-dusty-grey-dark, #8d8d8d);
+            }
+        }
+
+        pre {
+            margin: 0;
+            padding: 5px 10px;
+            white-space: pre-wrap;
+            background-color: var(--uui-color-divider);
+            border: var(--uui-input-border-width, 1px) solid var(--uui-input-border-color, var(--uui-color-border));
+            border-radius: var(--uui-input-border-radius, var(--uui-border-radius));
         }
 
     `;
